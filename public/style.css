@@ -33,7 +33,46 @@ body { background-color: #050010; }
   margin-top: 10px;
   border-radius: 10%;
   font-size: 25px;
-  font-family: "Quicksand", sans-serif;
+  font-family: "Quicksand", monospace;
   background-color: #300440;
   cursor: pointer;
+}
+#appslist #gameslist{
+  vertical-align: middle;
+  display: inline-block;
+  background-color: #050010;
+  width: calc(100% - 100px);
+  height: 300px;
+  font-family: 'Quicksand', monospace;
+}
+.entry{
+  width: 100px;
+  height: 100px;
+  background-color: #600880;
+  color: white;
+}
+.close {
+  width: 50px;
+  height: 50px;
+  background-color: red;
+}
+.maketag {
+  width: 100%;
+  height: 100%;
+  top:0;
+  position: absolute;
+  z-index: 99;
+}
+.closemaketag {
+  position: absolute;
+  width: 50px;
+  height: 50px;
+  background-color: red;
+  top: 30px;
+  left: 30px;
+  z-index: 100;
+}
+@keyframes kf_fade {
+  0% { opacity: 0; }
+  100% { opacity: 1; }
 }
