@@ -24,9 +24,15 @@ body { background-color: #050010; }
   transition: 0.5s ease-in-out;
 }
 .islands {
-    width: 100px;
-    height: 100px;
-    color: white;
-    text-align: center;
-    background-color: #300440;
+  width: 100px;
+  height: 100px;
+  color: white;
+  text-align: center;
+  line-height: 90px;
+  margin-top: 10px;
+  border-radius: 10%;
+  font-size: 25px;
+  font-family: "Quicksand", sans-serif;
+  background-color: #300440;
+  cursor: pointer;
 }
