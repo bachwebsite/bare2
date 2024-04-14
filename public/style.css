@@ -1,9 +1,25 @@
+body { background-color: #050010; }
 .proxywrapper {
-  text-align: center;
+  width: 100%;
   display: flex;
-  flex-direction: column;
-  align-items: center;
+  justify-content: center;
+  transition: 0.5s ease-in;
 }
+.titlee { display: inline-block; font-size: 100px; color: #300440; font-family: 'Quicksand', sans-serif;}
 .search-input {
+    display: inline-block; 
+  border: 2px solid darkorchid;
   width: calc(100% - 100px);
+  height: 50px;
+  transition: 0.5s ease-in-out;
+  background-color: #000010;
+  text-align: center;
+  color: white;
+  font-size: 25px;
+  font-family: 'Quicksand', sans-serif;
+}
+.search-input:focus {
+  border: 1px solid darkorchid;
+  width: calc(100% - 50px);
+  transition: 0.5s ease-in-out;
 }
