@@ -21,18 +21,8 @@
             <input class="search-input" placeholder="> type">
         </form>
         
-        <div class="islands" onclick="toggleDisplay('gameslist');">games</div>
-        <div class="islands" onclick="toggleDisplay('appslist')">apps</div>
-        <div id="appslist" style="display: none;">
-            <div class="close" onclick="toggleDisplay('appslist')">X</div>
-            <div class="entry">YouTube</div>
-            <div class="entry">Twitch</div>
-        </div>
-        <div id="gameslist" style="display: none;">
-            <div class="close" onclick="toggleDisplay('gameslist')">X</div>
-            <div class="entry">Infinite Craft</div>
-            <div class="entry">MineCraft</div>
-        </div>
+        <div class="islands" onclick="window.location = '/g/'">games</div>
+        <div class="islands" onclick="window.location = '/a/'">apps</div>
 
     </center>
   </div>
