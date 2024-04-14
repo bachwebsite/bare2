@@ -1,3 +1,4 @@
+.proxywrapper { text-align: center; }
 .search-input {
-    
+    width: calc(100% - 100px);
 }
