@@ -26,6 +26,7 @@ body { background-color: #050010; }
 .islands {
   width: 100px;
   height: 100px;
+  display: inline-block;
   color: white;
   text-align: center;
   line-height: 90px;
