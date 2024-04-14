@@ -23,3 +23,8 @@ body { background-color: #050010; }
   width: calc(100% - 50px);
   transition: 0.5s ease-in-out;
 }
+.islands {
+    width: 100px;
+    height: 100px;
+    background-color: #300440;
+}
