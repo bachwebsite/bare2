@@ -1,10 +1,12 @@
 function loadColorFromLocalStorage(varName, colorPickerId, coloredElementId) {
+    console.log('Loading color from localStorage');
     const savedColor = localStorage.getItem(varName);
     if (savedColor) {
         document.documentElement.style.setProperty(varName, savedColor);
         document.getElementById(colorPickerId).value = savedColor;
         document.getElementById(coloredElementId).style.backgroundColor = savedColor;
     }
+    console.log('Saved color:', savedColor);
 }
 
 function changeColor(varName, event) {
@@ -19,8 +21,4 @@ function changeColor(varName, event) {
 window.addEventListener('load', function() {
     loadColorFromLocalStorage('--c1', 'colorPicker1', 'coloredElement1');
     loadColorFromLocalStorage('--c2', 'colorPicker2', 'coloredElement2');
-    console.log('Loading color from localStorage');
-    const savedColor = localStorage.getItem(varName);
-    console.log('Saved color:', savedColor);
-
 });
