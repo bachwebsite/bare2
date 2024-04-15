@@ -5,7 +5,23 @@ body { background-color: #050010; }
   justify-content: center;
   transition: 0.5s ease-in;
 }
-.titlee { display: inline-block; font-size: 100px; color: #300440; font-family: 'Quicksand', sans-serif;}
+.titlee { 
+  display: inline-block;
+  font-size: 100px; 
+  font-weight: bold;
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  font-family: 'Quicksand', sans-serif;
+}
+#title {
+  background: url('./data/squig__3.png');
+  background-size: cover no-repeat;
+  color: #fff;
+  -webkit-text-fill-color: transparent;
+  -webkit-background-clip: text;
+  padding: 0;
+}
 .search-input {
     display: inline-block; 
   border: 2px solid darkorchid;
