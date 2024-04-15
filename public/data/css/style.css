@@ -9,9 +9,6 @@ body { background-color: var(--c2); font-family: 'Quicksand', sans-serif; }
   display: inline-block;
   font-size: 100px; 
   font-weight: bold;
-  background-clip: text;
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
   font-family: 'Quicksand', sans-serif;
 }
 nav {
@@ -49,11 +46,7 @@ nav>button {
 }
 
 #title {
-  background: url('/data/images/squig__3.png');
-  background-size: cover no-repeat;
-  color: #fff;
-  -webkit-text-fill-color: transparent;
-  -webkit-background-clip: text;
+  color: var(--c1);
   padding: 0;
 }
 .search-input {
