@@ -19,4 +19,8 @@ function changeColor(varName, event) {
 window.addEventListener('load', function() {
     loadColorFromLocalStorage('--c1', 'colorPicker1', 'coloredElement1');
     loadColorFromLocalStorage('--c2', 'colorPicker2', 'coloredElement2');
+    console.log('Loading color from localStorage');
+    const savedColor = localStorage.getItem(varName);
+    console.log('Saved color:', savedColor);
+
 });
