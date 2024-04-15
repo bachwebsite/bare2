@@ -8,6 +8,7 @@ body {
     height: calc(10vh);
     margin-top: 10px;
     background-color: #301050;
+    cursor: pointer;
 }
 .bubbly-button>a {
     font-size: 70px;
