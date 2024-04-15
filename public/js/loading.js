@@ -1,3 +1,3 @@
-window.load(function() {
+window.onload(function() {
     document.querySelector("#loading").hide();
 });
