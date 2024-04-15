@@ -1,0 +1,16 @@
+body {
+    background-color: #050010;
+}
+
+.bubbly-button {
+    border: 1px solid #551199;
+    width: calc(100vw - 100px);
+    height: calc(10vh);
+    margin-top: 10px;
+    background-color: #301050;
+}
+.bubbly-button>a {
+    font-size: 70px;
+    color: #aa99bb;
+    font-family: 'Quicksand', sans-serif;
+}
