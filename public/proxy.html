@@ -7,7 +7,8 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&family=Jacquarda+Bastarda+9&family=Manrope:wght@200..800&family=Quicksand:wght@300..700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="./style.css">
+    <link rel="stylesheet" href="./data/css/style.css">
+    <link rel="stylesheet" href="./data/css/root.css">
     <title>> proxy</title>
 </script>
 <body>
@@ -15,7 +16,7 @@
 
 <body>
     <div id="loading">
-        <img id="loading-image" src="./images/loading.gif" alt="Loading..." />
+        <img id="loading-image" src="./data/images/loading.gif" alt="Loading..." />
     </div>
     <center><nav> Want the old breakium?? <button onclick="location.href = __uv$config.prefix + __uv$config.encodeUrl('https://breakium.com/');">Click Me</button></nav></center>
     <div class="proxywrapper">
@@ -31,12 +32,13 @@
         <div class="islands" onclick="window.location = '/a/'">apps</div>
 
     </center>
+    <input type="color" id="colorPicker1" class="clrP" onchange="changeColor('--c1', event)">
+    <input type="color" id="colorPicker2" class="clrP" onchange="changeColor('--c2', event)">
   </div>
   <script src="/uv/uv.bundle.js"></script>
   <script src="/uv/uv.config.js"></script>
   <script src="/js/index.js"></script>
-  <script src="./js/loading.js"></script>
-
-    <script src="./proxy/vizify.js"></script>
+  <script src="./data/js/loading.js"></script>
+  <script src="./data/js/color.js"></script>
 </body>
 </html>

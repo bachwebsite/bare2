@@ -1,4 +1,4 @@
-body { background-color: #050010; font-family: 'Quicksand', sans-serif; }
+body { background-color: var(--c2); font-family: 'Quicksand', sans-serif; }
 .proxywrapper {
   width: 100%;
   display: flex;
@@ -18,14 +18,14 @@ nav {
   text-align: center;
   align-items: center;
   font-size: 30px;
-  background-color: #9012a3;
+  background-color: var(--c1);
 }
 nav>button {
   font-size: 20px;
   font-family: 'Quicksand', sans-serif;
   height:34px;
-  background-color: #9012a3;
-  border: 2px solid #010003;
+  background-color: var(--c1);
+  border: 2px solid var(--c2);
   border-radius: 10%;
 }
 
@@ -49,7 +49,7 @@ nav>button {
 }
 
 #title {
-  background: url('./images/squig__3.png');
+  background: url('/data/images/squig__3.png');
   background-size: cover no-repeat;
   color: #fff;
   -webkit-text-fill-color: transparent;
@@ -58,18 +58,18 @@ nav>button {
 }
 .search-input {
     display: inline-block; 
-  border: 2px solid darkorchid;
+  border: 2px solid var(--c1);
   width: calc(100% - 100px);
   height: 50px;
   transition: 0.5s ease-in-out;
-  background-color: #000010;
+  background-color: var(--c2);
   text-align: center;
   color: white;
   font-size: 25px;
   font-family: 'Quicksand', sans-serif;
 }
 .search-input:focus {
-  border: 1px solid darkorchid;
+  border: 1px solid var(--c1);
   width: calc(100% - 50px);
   transition: 0.5s ease-in-out;
 }
@@ -79,18 +79,19 @@ nav>button {
   display: inline-block;
   color: white;
   text-align: center;
+  border: 3px solid var(--c1);
   line-height: 90px;
   margin-top: 10px;
   border-radius: 10%;
   font-size: 25px;
   font-family: "Quicksand", monospace;
-  background-color: #300440;
+  background-color: var(--c2);
   cursor: pointer;
 }
 #appslist #gameslist{
   vertical-align: middle;
   display: inline-block;
-  background-color: #050010;
+  background-color: var(--c2);
   width: calc(100% - 100px);
   height: 300px;
   font-family: 'Quicksand', monospace;
@@ -98,7 +99,7 @@ nav>button {
 .entry{
   width: 100px;
   height: 100px;
-  background-color: #600880;
+  background-color: var(--c1);
   color: white;
 }
 .close {
