@@ -1,3 +1,3 @@
-$(window).load(function() {
-    $('#loading').hide();
+window.load(function() {
+    document.querySelector("#loading").hide();
 });
