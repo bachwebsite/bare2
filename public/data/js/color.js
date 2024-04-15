@@ -16,5 +16,7 @@ function changeColor(varName, event) {
     localStorage.setItem(varName, selectedColor);
 }
 
-loadColorFromLocalStorage('--c1', 'colorPicker1', 'coloredElement1');
-loadColorFromLocalStorage('--c2', 'colorPicker2', 'coloredElement2');
+window.addEventListener('load', function() {
+    loadColorFromLocalStorage('--c1', 'colorPicker1', 'coloredElement1');
+    loadColorFromLocalStorage('--c2', 'colorPicker2', 'coloredElement2');
+});
