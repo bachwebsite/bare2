@@ -43,9 +43,11 @@ nav>button {
 }
 
 #loading-image {
-  position: absolute;
-  top: translateY(50%);
-  left: translateX(50%);
+  display:block;
+  margin-top: auto;
+  margin-bottom: auto;
+  margin-left: auto;
+  margin-right: auto;
   z-index: 100;
 }
 
