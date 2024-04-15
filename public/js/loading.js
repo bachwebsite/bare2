@@ -1,3 +1,3 @@
 document.addEventListener("DOMContentLoaded", function() {
-    document.querySelector("#loading").hide();
+    document.querySelector("#loading").style.display = "none";
 });
