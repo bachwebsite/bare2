@@ -12,7 +12,7 @@ function loadColorFromLocalStorage(varName, colorPickerId, coloredElementId) {
 function changeColor(varName, event) {
     const selectedColor = event.target.value;
     document.documentElement.style.setProperty(varName, selectedColor);
-    const coloredElementId = varName === '--c1' ? 'coloredElement1' : 'coloredElement2';
+    coloredElementId = varName === '--c1' ? 'coloredElement1' : 'coloredElement2';
     document.getElementById(coloredElementId).style.backgroundColor = selectedColor;
     
     localStorage.setItem(varName, selectedColor);
