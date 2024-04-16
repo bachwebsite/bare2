@@ -32,4 +32,5 @@ function changeColor(varName, event) {
 window.addEventListener('load', function() {
     loadColorFromLocalStorage('--c1', '.color-picker', '.coloredElement1');
     loadColorFromLocalStorage('--c2', '.color-picker', '.coloredElement2');
+    loadColorFromLocalStorage('--c3', '.color-picker', '.coloredElement3');
 });

@@ -58,7 +58,8 @@ nav>button {
   width: calc(100% - 100px);
   height: 50px;
   transition: 0.5s ease-in-out;
-  background-color: var(--c2);
+  background-color: var(--c3);
+  box-shadow: 1px 2px 200px 2px var(--c3, 0.33);
   text-align: center;
   color: white;
   font-size: 25px;
@@ -67,11 +68,13 @@ nav>button {
 .search-input:hover {
   border: 1px solid var(--c1);
   width: calc(100% - 50px);
+  box-shadow: 1px 2px 40px 14px var(--c3);
   transition: 0.5s ease-in-out;
 }
 .search-input:focus {
   border: 1px solid var(--c1);
   width: calc(100% - 40px);
+  box-shadow: 1px 2px 40px 28px var(--c3);
   transition: 0.5s ease-in-out;
 }
 .islands {
@@ -83,10 +86,11 @@ nav>button {
   border: 3px solid var(--c1);
   line-height: 90px;
   margin-top: 10px;
+  box-shadow: 0px 0px 10px 1px var(--c3);
   border-radius: 10%;
   font-size: 25px;
   font-family: "Quicksand", monospace;
-  background-color: var(--c2);
+  background-color: var(--c3);
   cursor: pointer;
 }
 #appslist #gameslist{
@@ -129,6 +133,7 @@ nav>button {
   width: 50px;
   height: 50px;
   background-color: transparent;
+  border-radius: 50%;
   border: none;
   cursor: pointer;
   transition: 0.5s;
