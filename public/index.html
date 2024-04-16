@@ -1,15 +1,49 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Home</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&family=Jacquarda+Bastarda+9&family=Manrope:wght@200..800&family=Quicksand:wght@300..700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="./data/css/style.css">
+    <link rel="stylesheet" href="./data/css/root.css">
+    <title>Proxy</title>
 </head>
+
 <body>
-  <div id="loading">
-    <img id="loading-image" src="./data/images/loading.gif" alt="Loading..." />
-  </div>
-  <iframe src="proxy.html" style="position:fixed; top:0; left:0; bottom:0; right:0; width:100%; height:100%; border:none; margin:0; padding:0; overflow:hidden; z-index:999999;"></iframe>
-  <script src="./data/js/loading.js"></script>
+    <div id="loading">
+        <img id="loading-image" src="./data/images/loading.gif" alt="Loading..." />
+    </div>
+    <div class="navywrap"><div class="navy"><i class="fi-xwluxx-gear-wide" onclick="goto('/s.html'); this.style.cursor = 'pointer';"></i><i class="fi-xnluxx-gamepad" onclick="goto('/g/'); this.style.cursor = 'pointer';"></i><i class="fi-xwluxx-square-checkbox-wide" onclick="goto('/a/'); this.style.cursor = 'pointer';"></i><i class="fi-xnluxx-question-mark-alt" onclick="alert('breakium.pw is a proxy website that rids all pesky restrictors away.'); this.style.cursor = 'pointer';"></i></div></div>
+    <div class="proxywrapper">
+        <center>
+            <div id="title">
+                <h1 class="titlee">breakium.pw</h1>
+            </div>
+            <form>
+                <input class="search-input" placeholder="> type">
+            </form>
+
+            <div class="islands" onclick="window.location = '/g/'">games</div>
+            <div class="islands" onclick="window.location = '/a/'">apps</div>
+            <br><br><br>
+            <input type="color" id="colorPicker1" class="color-picker" onchange="changeColor('--c1', event)">
+            <input type="color" id="colorPicker2" class="color-picker" onchange="changeColor('--c2', event)">
+            <input type="color" id="colorPicker3" class="color-picker" onchange="changeColor('--c3', event)">
+        </center>
+    </div>
+    <script src="/uv/uv.bundle.js"></script>
+    <script src="/uv/uv.config.js"></script>
+    <script src="./data/js/index.js"></script>
+    <script src="./data/js/loading.js"></script>
+    <script src="./data/js/color.js"></script>
+    <script src="./data/js/custom-friconix.js"></script>
+    
+
+    <script defer src="data/js/friconix.js"> </script>
+    <script src="https://kit.fontawesome.com/671b9764c1.js" crossorigin="anonymous"></script>
 </body>
+
 </html>
