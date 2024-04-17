@@ -29,7 +29,7 @@ httpServer.on("request", (req, res) => {
 
 httpServer.on("listening", () => {
   console.log("HTTP server listening");
-  console.log("View your server at localhost:2100")
+  console.log("View your server at http://localhost:2100")
 });
 
 httpServer.listen({
