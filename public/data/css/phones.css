@@ -1,0 +1,12 @@
+p {
+    display: block;
+    font-family: 'Quicksand', sans-serif;
+    color: var(--c3);
+    font-weight: bolder;
+    font-size: 30px;
+    margin: auto;
+    padding:auto;
+}
+div#counter {
+    display: inline-block !important;
+}
