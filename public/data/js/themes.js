@@ -14,13 +14,13 @@ document.addEventListener("DOMContentLoaded", function () {
     function switchTheme(themeName) {
       const themeColors = {
         light: ['#000000', '#f0f0f0', '#f9f9f9'],
-        dark: ['#333333', '#444444', '#555555'],
-        crimson: ['#dc143c', '#ff6347', '#ff4500'],
-        amethyst: ['#a67cda', '#5600f5', '#3d00ad'],
-        sapphire: ['#1e90ff', '#4169e1', '#6495ed'],
-        emerald: ['#008000', '#32cd32', '#00ff00'],
-        gold: ['#ffd700', '#ffd700', '#ffcc00'],
-        scarlet: ['#ff2400', '#ff4500', '#ff6347']
+        dark: ['#212121', '#000000', '#1c1c1c'],
+        crimson: ['#750000', '#2e0000', '#660000'],
+        amethyst: ['#3c005c', '#240047', '#15002e'],
+        sapphire: ['#002680', '#001d4d', '#004570'],
+        emerald: ['#067104', '#063300', '#014200'],
+        gold: ['#434700', '#2d2e00', '#6b6800'],
+        scarlet: ['#ff1100', '#571600', '#570505']
       };
   
       const [c1, c2, c3] = themeColors[themeName];

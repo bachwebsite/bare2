@@ -1,6 +1,7 @@
 body { 
   background: radial-gradient(circle, var(--c2) -100%, rgba(0,0,0,1) 100%);
   font-family: 'Quicksand', sans-serif; 
+  overflow-y: hidden;
 }
 #counter {
   border: 2px solid var(--c2);
