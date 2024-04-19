@@ -7,10 +7,11 @@ body {
   border-radius: 50px;
 }
 .bubbly-button {
+  display: block;
   border: 1px solid var(--c1);
-  width: calc(100vw - 100px);
-  height: calc(10vh);
+  width: 50vw;
   margin-top: 10px;
+  height: 100px;
   background-color: var(--c2);
   cursor: pointer;
 }
