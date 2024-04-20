@@ -8,7 +8,6 @@ const app = express();
 
 app.use(express.static('public'));
 
-// Create an HTTP server
 const httpServer = http.createServer();
 const bareServer = createBareServer("/bare/");
 
@@ -28,7 +27,6 @@ httpServer.on("request", (req, res) => {
 })
 
 httpServer.on("listening", () => {
-  console.log("HTTP server listening");
   console.log(`View your server at http://localhost:${port}`);
 });
 
