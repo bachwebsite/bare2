@@ -1,35 +1,40 @@
-const http = require("node:http");
-const { createBareServer } = require("@tomphttp/bare-server-node");
-const fs = require("fs");
-const path = require("path");
-const url = require('url');
-const express = require('express');
+import { createBareServer } from '@tomphttp/bare-server-node';
+import express from "express";
+import { createServer } from "node:http";
+import { SocksProxyAgent } from 'socks-proxy-agent';
+const socksProxyAgent = new SocksProxyAgent('socks://localhost:40000');
+import { uv } from "@titaniumnetwork-dev/ultraviolet";
+import { join } from "node:path";
+import { hostname } from "node:os";
+import dotenv from 'dotenv';
+import { fileURLToPath } from "url";
+const publicPath = fileURLToPath(new URL("./public/", import.meta.url));
+const bare = createBareServer('/bare/', {});
 const app = express();
-
-app.use(express.static('public'));
-
-const httpServer = http.createServer();
-const bareServer = createBareServer("/bare/");
-
-httpServer.on("request", (req, res) => {
-  if (bareServer.shouldRoute(req)) {
-    bareServer.routeRequest(req, res);
+dotenv.config();
+app.use(express.static(publicPath));
+app.use("/b/uv/", express.static(uv));
+app.use("/uv/", express.static(uv));
+const server = createServer();
+server.on("request", (req, res) => {
+  if (bare.shouldRoute(req)) {
+    bare.routeRequest(req, res);
   } else {
     app(req, res);
-  }});
-
-  httpServer.on("upgrade", (req, socket, head) => {
-  if (bareServer.shouldRoute(req)) {
-    bareServer.routeUpgrade(req, socket, head);
+  }
+});
+server.on("upgrade", (req, socket, head) => {
+  if (bare.shouldRoute(req)) {
+    bare.routeUpgrade(req, socket, head);
   } else {
     socket.end();
   }
-})
-
-httpServer.on("listening", () => {
-  console.log(`View your server at http://localhost:${port}`);
+});
+const port = process.env.PORT || 3300;
+server.on("listening", () => {
+  console.log('UP')
 });
 
-httpServer.listen({
-  port: 2100,
+server.listen({
+  port,
 });
