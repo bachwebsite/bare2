@@ -9,7 +9,7 @@ body {
 .bubbly-button {
   display: block;
   border: 1px solid var(--c1);
-  width: 50vw;
+  width: 30vw;
   margin-top: 10px;
   height: 100px;
   background-color: var(--c2);
