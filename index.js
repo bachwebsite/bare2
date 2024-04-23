@@ -3,18 +3,17 @@ import express from "express";
 import { createServer } from "node:http";
 import { SocksProxyAgent } from 'socks-proxy-agent';
 const socksProxyAgent = new SocksProxyAgent('socks://localhost:40000');
-import { uv } from "@titaniumnetwork-dev/ultraviolet";
 import { join } from "node:path";
 import { hostname } from "node:os";
 import dotenv from 'dotenv';
 import { fileURLToPath } from "url";
+
 const publicPath = fileURLToPath(new URL("./public/", import.meta.url));
 const bare = createBareServer('/bare/', {});
 const app = express();
 dotenv.config();
 app.use(express.static(publicPath));
-app.use("/b/uv/", express.static(uv));
-app.use("/uv/", express.static(uv));
+
 const server = createServer();
 server.on("request", (req, res) => {
   if (bare.shouldRoute(req)) {
@@ -31,10 +30,10 @@ server.on("upgrade", (req, socket, head) => {
   }
 });
 const port = process.env.PORT || 2100;
-server.on("listening", () => {
-  console.log('UP')
-});
+server.on('listening', () => {
+  console.log(`Running at http://localhost:${port}`)
+})
 
 server.listen({
-  port,
-});
+  port: port,
+})
