@@ -30,9 +30,9 @@ function changeColor(varName, event) {
 }
 
 window.addEventListener('load', function() {
-    loadColorFromLocalStorage('--c1', '.color-picker', '.coloredElement1');
-    loadColorFromLocalStorage('--c2', '.color-picker', '.coloredElement2');
-    loadColorFromLocalStorage('--c3', '.color-picker', '.coloredElement3');
+    loadColorFromLocalStorage('--c1', '#colorPicker1', '.coloredElement1');
+    loadColorFromLocalStorage('--c2', '#colorPicker2', '.coloredElement2');
+    loadColorFromLocalStorage('--c3', '#colorPicker3', '.coloredElement3');
 
     const colorPickers = document.querySelectorAll('.color-picker');
     colorPickers.forEach(picker => {
