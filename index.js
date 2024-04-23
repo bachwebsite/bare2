@@ -8,8 +8,8 @@ import { hostname } from "node:os";
 import dotenv from 'dotenv';
 import { fileURLToPath } from "url";
 
-const publicPath = fileURLToPath(new URL("./public/", import.meta.url));
-const bare = createBareServer('/bare/', {});
+const publicPath = fileURLToPath(new URL("/public/", import.meta.url));
+const bare = createBareServer('/a/', {});
 const app = express();
 dotenv.config();
 app.use(express.static(publicPath));
