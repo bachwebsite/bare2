@@ -1,7 +1,7 @@
 
       function search(event) {
         event.preventDefault();
-        const searchInput = document.getElementById("searchInput");
+        const searchInput = document.getElementById("search-input");
         const query = searchInput.value.trim();
         let url = "";
         try {
