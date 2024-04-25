@@ -7,7 +7,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&family=Jacquarda+Bastarda+9&family=Manrope:wght@200..800&family=Quicksand:wght@300..700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="./data/css/style.css">
+    <link rel="stylesheet" href="./data/css/t.css">
     <link rel="stylesheet" href="./data/css/root.css">
     <script async src="https://arc.io/widget.min.js#CfKt6RMX"></script>
     <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/font-awesome.min.css">
@@ -23,36 +23,31 @@
     <nav>
         
     </nav>
-    <div class="proxywrapperception">
-        <div class="proxywrapper">
-            <center>
-                <div id="counter">
-                    <div id="title">
-                        <h1 class="titlee">breakium</h1><br>
-                    </div>
+    <div class="proxywrapper">
+            <div id="counter" class="c__title">
+                <div id="title">
+                    <h1 class="titlee">breakium</h1>
                     <h5 id="title"><a href="https://discord.gg/fNrVkDnVjy">ze discord</a></h5>
-                    <form>
-                        <input id="search-input" placeholder="> type">
-                    </form>
-
-                    <br><br><br>
+                </div>
+            </div>
+            <div id="counter" class="c__form">
+                <form id="fs" method="POST">
+                    <input id="is" class="main-search" placeholder="Search with Google or enter address" type="text" />
+                </form>
+                <br><br><br>
+                <div id="clrs">
                     <input type="color" id="colorPicker1" class="color-picker" onchange="changeColor('--c1', event)">
                     <input type="color" id="colorPicker2" class="color-picker" onchange="changeColor('--c2', event)">
                     <input type="color" id="colorPicker3" class="color-picker" onchange="changeColor('--c3', event)">
                 </div>
-                <div class="navywrap">
-                    <div class="navy">
-                        <i class="fi-xwluxx-gear-wide" onmouseover="this.title='Settings';" onclick="goto('/s.html'); this.style.cursor = 'pointer';"></i>
-                        <i class="fi-xnluxx-gamepad" onmouseover="this.title='Games';" onclick="goto('/g.html'); this.style.cursor = 'pointer';"></i>  
-                        <i class="fi-xwluxx-square-checkbox-wide" onmouseover="this.title='Apps';" onclick="goto('/a.html'); this.style.cursor = 'pointer';"></i>
-                        <i class="fi-xnluxx-question-mark-alt" onmouseover="this.title='About';" onclick="alert('breakium.pw is a proxy website that rids all pesky restrictors away.'); this.style.cursor = 'pointer';"></i>
-                        <i class="fi-xwluxx-smartphone-wide" onmouseover="this.title='Phone';" onclick="goto('/p.html'); this.style.cursor = 'pointer';"></i>
-                        <i class="fa-solid fa-link" onmouseover="this.title='Phone';" onclick="goto('/p.html'); this.style.cursor = 'pointer';"></i>
-                    </div>
-                </div>
-            </center>
-            
-        </div>
+            </div>
+            <div class="navy">
+                <i class="fi-xwluxx-gear-wide" onmouseover="this.title='Settings';" onclick="goto('/s.html'); this.style.cursor = 'pointer';"></i>
+                <i class="fi-xnluxx-gamepad" onmouseover="this.title='Games';" onclick="goto('/g.html'); this.style.cursor = 'pointer';"></i>  
+                <i class="fi-xwluxx-square-checkbox-wide" onmouseover="this.title='Apps';" onclick="goto('/a.html'); this.style.cursor = 'pointer';"></i>
+                <i class="fi-xnluxx-question-mark-alt" onmouseover="this.title='About';" onclick="alert('breakium.pw is a proxy website that rids all pesky restrictors away.'); this.style.cursor = 'pointer';"></i>
+                <i class="fi-xwluxx-smartphone-wide" onmouseover="this.title='Phone';" onclick="goto('/p.html'); this.style.cursor = 'pointer';"></i>
+            </div>
     </div>
     <script src="./uv/uv.bundle.js"></script>
     <script src="./uv/uv.config.js"></script>
@@ -62,9 +57,10 @@
     <script src="./data/js/custom-friconix.js"></script>
     <script src="./data/js/moveis.js"></script>
     <script src="./data/js/search.js"></script>
+    <script src="./main.js"></script>
     
 
-    <script defer src="data/js/friconix.js"> </script>
+    <script defer src="./data/js/friconix.js"> </script>
     <script src="https://kit.fontawesome.com/671b9764c1.js" crossorigin="anonymous"></script>
 </body>
 
