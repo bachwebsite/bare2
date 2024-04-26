@@ -1,56 +1,47 @@
+import http from "node:http";
+import { createBareServer } from "@tomphttp/bare-server-node";
+import fs from "fs";
+import path, { join } from "path";
+import url from 'url';
 import express from 'express';
-import http from 'node:http';
-import { createBareServer } from '@tomphttp/bare-server-node';
-import cors from 'cors';
-import path from "path";
-import { hostname } from "node:os"
+import { fileURLToPath } from "url";
 
-const server = http.createServer();
-const app = express(server);
-const __dirname = process.cwd();
-const bareServer = createBareServer('/bare/');
-const PORT = 2100;
+const app = express();
 
-app.use(express.json());
-app.use(express.urlencoded({ extended: true }));
-app.use(express.static(__dirname + '/public/'));
-app.use(cors());
+app.use(express.static('public'));
 
-server.on('request', (req, res) => {
-    if (bareServer.shouldRoute(req)) {
-        bareServer.routeRequest(req, res)
-    } else {
-        app(req, res)
-    }
-})
+const publicPath = fileURLToPath(new URL("public", import.meta.url));
 
-server.on('upgrade', (req, socket, head) => {
-    if (bareServer.shouldRoute(req)) {
-        bareServer.routeUpgrade(req, socket, head)
-    } else {
-        socket.end()
-    }
-})
+// Create an HTTP server
+const httpServer = http.createServer();
+const bareServer = createBareServer("/bare/");
 
-server.on('listening', () => {
-    const address = server.address();
+app.use((req, res) => {
+  res.status(404);
+  res.sendFile(join(publicPath, "404.html"));
+});
 
-    console.log(`\thttp://localhost:${address.port}`);
-    console.log(`\thttp://${hostname()}:${address.port}`);
-    console.log(
-        `\thttp://${address.family === "IPv6" ? `[${address.address}]` : address.address
-        }:${address.port}`
-    );
-})
+httpServer.on("request", (req, res) => {
+  if (bareServer.shouldRoute(req)) {
+    bareServer.routeRequest(req, res);
+  } else {
+    app(req, res);
+  }
+});
 
-server.listen({ port: PORT, })
+httpServer.on("upgrade", (req, socket, head) => {
+  if (bareServer.shouldRoute(req)) {
+    bareServer.routeUpgrade(req, socket, head);
+  } else {
+    socket.end();
+  }
+});
 
-process.on("SIGINT", shutdown);
-process.on("SIGTERM", shutdown);
+httpServer.on("listening", () => {
+  console.log("HTTP server listening");
+  console.log("View your server at http://localhost:2100");
+});
 
-function shutdown() {
-    console.log("SIGTERM signal received: closing HTTP server");
-    server.close();
-    bareServer.close();
-    process.exit(0);
-}
+httpServer.listen({
+  port: 2100,
+});
