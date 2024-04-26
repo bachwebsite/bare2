@@ -1,18 +1,18 @@
 {
-	"name": "proxytest-pw",
+	"name": "breakium",
 	"version": "1.0.1",
 	"type": "module",
-	"description": "Your project description",
+	"description": "breakium",
 	"main": "index.js",
 	"scripts": {
 	  "start": "node index.js",
 	  "dev": "nodemon index.js"
 	},
 	"dependencies": {
-		"express": "^4.17.2",
-		"@titaniumnetwork-dev/ultraviolet": "^3.0.1",
-		"socks-proxy-agent": "^8.0.2",
-		"serve-static": "^1.15.0"
+		"@titaniumnetwork-dev/ultraviolet": "^1.0.8",
+    	"@tomphttp/bare-server-node": "^1.2.5",
+    	"express": "^4.18.2",
+		"@cypress/request": "^3.0.0"
 	}
   }
   
