@@ -1,18 +1,16 @@
 {
 	"name": "breakium",
-	"version": "1.0.1",
+	"version": "1.0.2",
 	"type": "module",
 	"description": "breakium",
 	"main": "index.js",
 	"scripts": {
-	  "start": "node index.js",
-	  "dev": "nodemon index.js"
+	  "start": "node index.js"
 	},
 	"dependencies": {
-		"@titaniumnetwork-dev/ultraviolet": "^1.0.8",
-    	"@tomphttp/bare-server-node": "^1.2.5",
-    	"express": "^4.18.2",
-		"@cypress/request": "^3.0.0"
+		"@tomphttp/bare-server-node": "^2.0.3",
+      	"express": "^4.18.2",
+		"cors": "^2.8.5"
 	}
   }
   
