@@ -18,26 +18,26 @@ app.use(cors());
 
 
 app.get('/', (req, res) => {
-    res.sendFile(path.join(process.cwd(), '/public/index.html'));
+    res.sendFile(path.join(process.cwd(), './public/index.html'));
 });
 app.get('/g', (req, res) => {
-    res.sendFile(path.join(process.cwd(), '/public/g.html'));
+    res.sendFile(path.join(process.cwd(), './public/g.html'));
 });
 
 app.get('/s', (req, res) => {
-    res.sendFile(path.join(process.cwd(), '/public/s.html'));
+    res.sendFile(path.join(process.cwd(), './public/s.html'));
 });
 
 app.get('/a', (req, res) => {
-    res.sendFile(path.join(process.cwd(), '/public/a.html'));
+    res.sendFile(path.join(process.cwd(), './public/a.html'));
 });
 
 app.get('/p', (req, res) => {
-    res.sendFile(path.join(process.cwd(), '/public/p.html'));
+    res.sendFile(path.join(process.cwd(), './public/p.html'));
 });
 
 app.get('/t', (req, res) => {
-    res.sendFile(path.join(process.cwd(), '/public/t.html'));
+    res.sendFile(path.join(process.cwd(), './public/t.html'));
 });
 
 server.on('request', (req, res) => {
