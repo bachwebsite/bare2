@@ -13,32 +13,8 @@ const PORT = 2100;
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
-app.use(express.static(__dirname + '/public'));
+app.use(express.static(__dirname + '/public/'));
 app.use(cors());
-
-
-app.get('/', (req, res) => {
-    res.sendFile(path.join(process.cwd(), './public/index.html'));
-});
-app.get('/g', (req, res) => {
-    res.sendFile(path.join(process.cwd(), './public/g.html'));
-});
-
-app.get('/s', (req, res) => {
-    res.sendFile(path.join(process.cwd(), './public/s.html'));
-});
-
-app.get('/a', (req, res) => {
-    res.sendFile(path.join(process.cwd(), './public/a.html'));
-});
-
-app.get('/p', (req, res) => {
-    res.sendFile(path.join(process.cwd(), './public/p.html'));
-});
-
-app.get('/t', (req, res) => {
-    res.sendFile(path.join(process.cwd(), './public/t.html'));
-});
 
 server.on('request', (req, res) => {
     if (bareServer.shouldRoute(req)) {
