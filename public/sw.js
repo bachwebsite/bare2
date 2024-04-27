@@ -16,7 +16,7 @@ self.addEventListener("fetch", (event) => {
         return await dynamic.fetch(event);
       }
 
-      if (event.request.url.startsWith(location.origin + "/classes/math/")) {
+      if (event.request.url.startsWith(location.origin + "/service/")) {
         return await uv.fetch(event);
       }
 
