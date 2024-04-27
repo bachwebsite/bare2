@@ -1,16 +1,19 @@
 {
-	"name": "breakium",
-	"version": "1.0.2",
-	"type": "module",
-	"description": "breakium",
+	"name": "Ephraim",
+	"version": "1.0.0",
+	"description": "A secure way to anonymously browse the internet",
 	"main": "index.js",
+	"type": "module",
 	"scripts": {
-	  "start": "node index.js"
+		"start": "node index.js",
+		"xenapsissetup": "npm i"
 	},
 	"dependencies": {
-		"@tomphttp/bare-server-node": "^2.0.3",
-      	"express": "^4.18.2",
-		"cors": "^2.8.5"
+		"@tomphttp/bare-server-node": "^2.0.1",
+		"@tsparticles/react": "^3.0.0",
+		"express": "^4.18.2"
+	},
+	"devDependencies": {
+		"tailwindcss": "^3.4.3"
 	}
-  }
-  
+}
