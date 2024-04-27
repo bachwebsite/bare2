@@ -21,9 +21,9 @@ const __filename = fileURLToPath(import.meta.url);
 const __dirname = dirname(__filename);
 
 app.use(compression());
-app.use(express.static(__dirname + "/static/"));
-app.use("/class/", express.static(__dirname + "/services/uv/"));
-app.use("/work/", express.static(__dirname + "/services/dynamic/"));
+app.use(express.static(__dirname + "/public/"));
+app.use("/uv/", express.static(__dirname + "/uv/"));
+app.use("/dynamic/", express.static(__dirname + "/dynamic/"));
 
 app.use((req, res) => {
   res.status(404);
