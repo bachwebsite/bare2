@@ -1,168 +1,83 @@
+
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Breakium</title>
-<style>
-  body {
-    background-color: #100020;
-    font-family: Arial, sans-serif;
-  }
-
-  .close-btn {
-    font-size: 10px;
-  }
-
-  .tabs {
-      display: flex;
-      gap: 10px;
-      margin-bottom: 10px;
-  }
-
-  .tablinks {
-      padding: 10px 20px;
-      background-color: #f0f0f0;
-      border: 1px solid #ccc;
-      cursor: pointer;
-  }
-  .tablinks.active {
-    background-color: #d0d0d0; /* Adjust the color as needed */
-  }
-
-
-  .tablinks:hover {
-      background-color: #e0e0e0;
-  }
-
-  .tab-content {
-      height: 850px;
-  }
-
-  .tabiframe {
-      width: 100%;
-      height: 100%;
-      display: none;
-  }
-
-  .tabiframe.active {
-      display: block;
-  }
-</style>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&family=Jacquarda+Bastarda+9&family=Manrope:wght@200..800&family=Quicksand:wght@300..700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="./data/css/root.css">
+    <link rel="stylesheet" href="./data/css/style.css">
+    <script async src="https://arc.io/widget.min.js#CfKt6RMX"></script>
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/font-awesome.min.css">
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1499389693327166"
+     crossorigin="anonymous"></script>
+    <title>breakium</title>
 </head>
-  <body>
-    <div class="tabs">
-      <button class="new-tab-btn" onclick="createNewTab()">+</button>
-      <button class="new-tab-btn" onclick="closeSelectedTab()">x</button>
-      <button class="new-tab-btn" onclick="openinwindow()">open in window</button>
-      
+
+<body>
+  <div id="container">
+    <div id="loading">
+        <img id="loading-image" src="./data/images/loading.gif" alt="Loading..." />
     </div>
-    <div class="tab-content">
-      <iframe
-        id="Tab3"
-        class="tabiframe"
-        src="main.html"
-        frameborder="0"
-      ></iframe>
-      <p style="color: wheat;">CLICK + TO CREATE A TAB</p>
-    </div>
-    
+    <div id="darker"></div>
+    <nav>
+      <a href="/main.html">breakium </a><br>
+      <a href="/english">games </a><br>
+      <a href="/math">phones </a><br>
+      <a href="/science">apps </a>
+      <span id="span">_time</span><br>
+    </nav>
+    <center>
+      <div id="mm">
+        <!--<form id="form">
+          <input id="adrbar" type="text" placeholder="type URL or search Google"/>                    
+        </form>-->
+        <form id="uv-form" class="searchbar-center">
+          <div class="searchbar-input-spacer"></div>
+          <input id="uv-address" type="text" class="searchbar-input" autocomplete="off" title="Search" role="combobox" placeholder="search" />
+        </form>
+      </div>
+    </center>  
+  </div>
+    <script src="uv/uv.bundle.js"></script>
+    <script src="uv/uv.config.js"></script>
+    <script src="uv/uv.handler.js"></script>
+    <script src="uv/uv.sw.js"></script>
+    <script src="uv/uv.client.js"></script>
+    <script src="./sw.js"></script>
     <script>
-        
-      function closeSelectedTab() {
-        var activeTab = document.querySelector(".tablinks.active");
-        if (activeTab) {
-          closeTab(activeTab);
-        }
+      var span = document.getElementById('span'); 
+      function time() {var d = new Date();
+        var s = d.getSeconds();
+        var m = d.getMinutes();
+        var h = d.getHours();
+        span.textContent = ("0" + h).substr(-2) + ":" + ("0" + m).substr(-2) + ":" + ("0" + s).substr(-2);
       }
-      function openTab(evt, tabName) {
-        var iframes = document.getElementsByClassName("tabiframe");
-        for (var i = 0; i < iframes.length; i++) {
-          iframes[i].classList.remove("active");
-        }
+      setInterval(time, 1000);
+      console.log(time, 1000);
 
-        var iframeToShow = document.getElementById(tabName);
-        iframeToShow.classList.add("active");
-
-        var tablinks = document.getElementsByClassName("tablinks");
-        for (var i = 0; i < tablinks.length; i++) {
-          tablinks[i].classList.remove("active");
-        }
-
-        if (evt) {
-          evt.currentTarget.classList.add("active");
-          addCloseButton(evt.currentTarget);
-
-
-          evt.currentTarget.textContent = iframeToShow.contentDocument.title;
-        }
-      }
-      function addCloseButton(tabButton) {
-            var closeButton = tabButton.querySelector(".close-btn");
-            if (closeButton) {
-                return;
-            }
-
-            var closeBtn = document.createElement("span");
-            closeBtn.classList.add("close-btn");
-            closeBtn.innerHTML = "          ";
-            tabButton.appendChild(closeBtn);
-
-            closeBtn.addEventListener("click", function (e) {
-                e.stopPropagation();
-                closeTab(tabButton);
-            });
-        }
-      function closeTab(tabButton) {
-        var tabName = tabButton.getAttribute("onclick").match(/'(.*?)'/)[1];
-        var iframeToClose = document.getElementById(tabName);
-        iframeToClose.classList.remove("active");
-
-        tabButton.remove();
-        iframeToClose.remove();
-
-        var activeTab = document.querySelector(".tablinks.active");
-        if (activeTab && activeTab.id === tabName) {
-          var remainingTabs = document.querySelectorAll(".tablinks");
-          if (remainingTabs.length > 0) {
-            remainingTabs[0].click();
-          }
-        }
-      }
-
-      function createNewTab() {
-        var numTabs = document.querySelectorAll(".tablinks").length;
-        var newTabId = "Tab" + (numTabs + 1);
-
-        var newTabButton = document.createElement("button");
-        newTabButton.classList.add("tablinks");
-        newTabButton.setAttribute("onclick", "openTab(event, '" + newTabId + "')");
-
-        var newIframe = document.createElement("iframe");
-        newIframe.id = newTabId;
-        newIframe.classList.add("tabiframe");
-        newIframe.src = "main.html";
-        newIframe.frameBorder = 0;
-
-        var tabsContainer = document.querySelector(".tabs");
-        tabsContainer.insertBefore(newTabButton, tabsContainer.lastElementChild);
-
-        var tabContentContainer = document.querySelector(".tab-content");
-        tabContentContainer.appendChild(newIframe);
-
-        openTab(null, newTabId);
-        addCloseButton(newTabButton);
-    }
-      function openinwindow() {
-        var iframe = document.querySelector(".tabiframe.active");
-
-        // Check if iframe is defined before getting its location
-        if (iframe) {
-          window.location = iframe.src;
-        } else {
-          console.error("No active iframe found");
-        }
-      }
+      window.onload = function() {
+        window.parent.postMessage({ title: document.title, source: window.frameElement.id }, '*');
+      };
     </script>
+    
+    
+
+    <script src="./data/js/index.js"></script>
+    <script src="./data/js/loading.js"></script>
+    <script src="./data/js/color.js"></script>
+    <script src="./data/js/custom-friconix.js"></script>
+    <script src="./data/js/moveis.js"></script>
+    <script src="./data/js/tabsys.js"></script>
+    <script src="./data/js/siba.js"></script>
+    <script src="./data/js/keypresses.js"></script>
+    
+
+    <script defer src="./data/js/friconix.js"> </script>
+    <script src="https://kit.fontawesome.com/671b9764c1.js" crossorigin="anonymous"></script>
 </body>
+
 </html>
