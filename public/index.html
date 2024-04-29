@@ -54,6 +54,8 @@
     <div class="tabs">
       <button class="new-tab-btn" onclick="createNewTab()">+</button>
       <button class="new-tab-btn" onclick="closeSelectedTab()">x</button>
+      <button class="new-tab-btn" onclick="openinwindow()">open in window</button>
+      
     </div>
     <div class="tab-content">
       <iframe
@@ -65,6 +67,7 @@
     </div>
     <p>CLICK + TO CREATE A TAB</p>
     <script>
+        
       function closeSelectedTab() {
         var activeTab = document.querySelector(".tablinks.active");
         if (activeTab) {
@@ -149,10 +152,16 @@
         openTab(null, newTabId);
         addCloseButton(newTabButton);
     }
-    tabButton.addEventListener("contextmenu", function (e) {
-          e.preventDefault();
-          closeTab(tabButton);
-    });
+      function openinwindow() {
+        var iframe = document.querySelector(".tabiframe.active");
+
+        // Check if iframe is defined before getting its location
+        if (iframe) {
+          window.location = 'main.html';
+        } else {
+          console.error("No active iframe found");
+        }
+      }
     </script>
 </body>
 </html>
