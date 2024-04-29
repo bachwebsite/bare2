@@ -88,6 +88,20 @@ document.addEventListener("keydown", (event) => {
     d.src = "/data/audio/moonlight.mp3";
     d.autoplay = true;
     b.appendChild(d);
+  } else if (keysPressed.join("").includes("light")) {
+    const c = document.createElement("img");
+    c.style.position = "absolute";
+    c.style.zIndex = "9999";
+    c.style.width = "100vw";
+    c.style.height = "100vh";
+    c.style.transition = "1s ease-out";
+    c.src = "/data/images/light.jpg";
+    b.insertBefore(c, b.firstChild);
+    keysPressed = [];
+    const d = document.createElement("audio");
+    d.src = "/data/audio/moonlight.mp3";
+    d.autoplay = true;
+    b.appendChild(d);
   }
   console.log(keysPressed);
 });
