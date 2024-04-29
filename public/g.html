@@ -10,13 +10,18 @@
         <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1499389693327166" crossorigin="anonymous"></script>
     </head>
     <body>
+        <nav>
+            <a href="/">breakium </a><br>
+            <a href="/english">games </a><br>
+            <a href="/math">phones </a><br>
+            <a href="/science">apps </a>
+            <span id="span">_time</span><br>
+          </nav>
         <center>
-            <input id="search-input" placeholder="> type">
+        <div id="counter">
             <input type="text" id="searchInput" placeholder="Search...">
             <ul id="searchResults"></ul>
-        </center>
-        <center id="counter">
-            <button class="bubbly-button"><a onclick="location.href = __uv$config.prefix + __uv$config.encodeUrl('https://storage.y8.com/y8-studio/unity_webgl/bitlaslt/slope_v_1_2_5/?key=9757549&value=80527');">Slope</a></button>
+                <button class="bubbly-button"><a onclick="location.href = __uv$config.prefix + __uv$config.encodeUrl('https://storage.y8.com/y8-studio/unity_webgl/bitlaslt/slope_v_1_2_5/?key=9757549&value=80527');">Slope</a></button>
                 <button class="bubbly-button"><a onclick="location.href = __uv$config.prefix + __uv$config.encodeUrl('https://images-opensocial.googleusercontent.com/gadgets/ifr?url=https://s3.amazonaws.com/production-assetsbucket-8ljvyr1xczmb/9ecda005-11e9-4b52-ab9e-700b4d46d00f%2Fblb.xml&container=ig');">Blade Ball</a></button>
                 <button class="bubbly-button"><a onclick="location.href = __uv$config.prefix + __uv$config.encodeUrl('https://infinite-craft.gg/infinite-craft/');">Infinite Craft</a></button>
                 <button class="bubbly-button"><a onclick="location.href = __uv$config.prefix + __uv$config.encodeUrl('https://old.breakium.com/games/farming-sim/');">Farming Simulator</a></button>
@@ -679,10 +684,11 @@
                 The Legend of Zelda: The Minish Cap</a></button>
                 <button class="bubbly-button"><a onclick="location.href = __uv$config.prefix + __uv$config.encodeUrl('https://old.breakium.com/games/launcher.html#pokemon-xy">
                 Pokemon X&Y</a></button>
-        </center>
+        </div>
+    </center>
 
-        <script src="/uv/uv.bundle.js"></script>
-        <script src="/uv/uv.config.js"></script>
+        <script src="uv/uv.bundle.js"></script>
+        <script src="uv/uv.config.js"></script>
         <script src="./data/js/index.js"></script>
         <script src="./data/js/color.js"></script>
         <script>
@@ -711,5 +717,16 @@
             });
 
         </script>
+        <script>
+            var span = document.getElementById('span'); 
+            function time() {var d = new Date();
+              var s = d.getSeconds();
+              var m = d.getMinutes();
+              var h = d.getHours();
+              span.textContent = ("0" + h).substr(-2) + ":" + ("0" + m).substr(-2) + ":" + ("0" + s).substr(-2);
+            }
+            setInterval(time, 1000);
+            console.log(time, 1000);
+          </script>
     </body>
 </html>

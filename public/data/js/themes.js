@@ -1,76 +1,159 @@
-document.addEventListener("DOMContentLoaded", function () {
-    const themeDropdown = document.querySelector("#theme-dropdown select");
-    const coloredElements = document.querySelectorAll('.coloredElement1, .coloredElement2, .coloredElement3');
-  
-    themeDropdown.addEventListener("change", function () {
-      const selectedTheme = themeDropdown.value;
-      if (selectedTheme === 'custom') {
-        loadCustomColors();
-      } else {
-        switchTheme(selectedTheme);
+"use strict";
+/**
+ * @type {HTMLFormElement}
+ */
+const form = document.getElementById("uv-form");
+/**
+ * @type {HTMLInputElement}
+ */
+const address = document.getElementById("uv-address");
+/**
+ * @type {HTMLInputElement}
+ */
+const searchEngine = document.getElementById("uv-search-engine");
+/**
+ * @type {HTMLParagraphElement}
+ */
+const error = document.getElementById("uv-error");
+/**
+ * @type {HTMLPreElement}
+ */
+const errorCode = document.getElementById("uv-error-code");
+
+const input = document.querySelector("input");
+
+const swConfig = {
+  'uv': { file: '/uv/sw.js', config: __uv$config },
+  'dynamic': { file: '/dynamic/sw.js', config: __dynamic$config }
+};
+function registerSW() {
+  if (localStorage.getItem("registerSW") === "true") {
+    var proxySetting = localStorage.getItem('proxy') || 'uv';
+    let { file: swFile, config: swConfigSettings } = swConfig[proxySetting];
+
+    navigator.serviceWorker.register(swFile, { scope: swConfigSettings.prefix })
+      .then((registration) => {
+        console.log('ServiceWorker registration successful with scope: ', registration.scope);
+      })
+      .catch((error) => {
+        console.error('ServiceWorker registration failed:', error);
+      });
+  }
+}
+class crypts {
+  static encode(str) {
+    return encodeURIComponent(
+      str
+        .toString()
+        .split("")
+        .map((char, ind) => (ind % 2 ? String.fromCharCode(char.charCodeAt() ^ 2) : char))
+        .join("")
+    );
+  }
+
+  static decode(str) {
+    if (str.charAt(str.length - 1) === "/") {
+      str = str.slice(0, -1);
+    }
+    return decodeURIComponent(
+      str
+        .split("")
+        .map((char, ind) => (ind % 2 ? String.fromCharCode(char.charCodeAt() ^ 2) : char))
+        .join("")
+    );
+  }
+}
+
+function search(input) {
+  input = input.trim();
+  const searchTemplate = localStorage.getItem('engine') || 'https://google.com/search?q=%s';
+
+  try {
+    return new URL(input).toString();
+  } catch (err) {
+    try {
+      const url = new URL(`http://${input}`);
+      if (url.hostname.includes(".")) {
+        return url.toString();
       }
+      throw new Error('Invalid hostname');
+    } catch (err) {
+      return searchTemplate.replace("%s", encodeURIComponent(input));
+    }
+  }
+}
+if ('serviceWorker' in navigator) {
+  var proxySetting = localStorage.getItem('proxy') || 'uv';
+  let swConfig = {
+    'uv': { file: '/uv/sw.js', config: __uv$config },
+    'dynamic': { file: '/dynamic/sw.js', config: __dynamic$config }
+
+  };
+
+  let { file: swFile, config: swConfigSettings } = swConfig[proxySetting];
+
+  navigator.serviceWorker.register(swFile, { scope: swConfigSettings.prefix })
+    .then((registration) => {
+      console.log('ServiceWorker registration successful with scope: ', registration.scope);
+      form.addEventListener('submit', async (event) => {
+        event.preventDefault();
+
+        let encodedUrl = swConfigSettings.prefix + crypts.encode(search(address.value));
+        sessionStorage.setItem("encodedUrl", encodedUrl);
+        const browseSetting = localStorage.getItem('browse');
+        const browseUrls = {
+          "go": "/zebra",
+          "norm": encodedUrl
+        };
+
+        const urlToNavigate = browseUrls[browseSetting] || "/zebra";
+        location.href = urlToNavigate;
+      });
+    })
+    .catch((error) => {
+      console.error('ServiceWorker registration failed:', error);
     });
-  
-    function switchTheme(themeName) {
-      const themeColors = {
-        light: ['#000000', '#f0f0f0', '#f9f9f9'],
-        dark: ['#212121', '#000000', '#1c1c1c'],
-        crimson: ['#750000', '#2e0000', '#660000'],
-        amethyst: ['#3c005c', '#240047', '#15002e'],
-        sapphire: ['#002680', '#001d4d', '#004570'],
-        emerald: ['#067104', '#063300', '#014200'],
-        gold: ['#434700', '#2d2e00', '#6b6800'],
-        scarlet: ['#ff1100', '#571600', '#570505']
-      };
-  
-      const [c1, c2, c3] = themeColors[themeName];
-      applyColors(c1, c2, c3);
-  
-      // Save theme colors to localStorage
-      localStorage.setItem('--c1', c1);
-      localStorage.setItem('--c2', c2);
-      localStorage.setItem('--c3', c3);
-    }
-  
-    function loadCustomColors() {
-      const customC1 = localStorage.getItem('--c1');
-      const customC2 = localStorage.getItem('--c2');
-      const customC3 = localStorage.getItem('--c3');
-  
-      if (customC1 && customC2 && customC3) {
-        applyColors(customC1, customC2, customC3);
-      }
-    }
-  
-    function applyColors(c1, c2, c3) {
-      document.documentElement.style.setProperty('--c1', c1);
-      document.documentElement.style.setProperty('--c2', c2);
-      document.documentElement.style.setProperty('--c3', c3);
-  
-      // Update colored elements with new colors
-      coloredElements.forEach(element => {
-        if (element.classList.contains('coloredElement1')) {
-          element.style.backgroundColor = c1;
-        } else if (element.classList.contains('coloredElement2')) {
-          element.style.backgroundColor = c2;
-        } else if (element.classList.contains('coloredElement3')) {
-          element.style.backgroundColor = c3;
+}
+
+
+function launch(val) {
+  if ('serviceWorker' in navigator) {
+    let proxySetting = localStorage.getItem('proxy') || 'uv';
+    let swConfig = {
+      'uv': { file: '/uv/sw.js', config: __uv$config },
+      'dynamic': { file: '/dynamic/sw.js', config: __dynamic$config }
+    };
+
+    // Use the selected proxy setting or default to 'uv'
+    let { file: swFile, config: swConfigSettings } = swConfig[proxySetting];
+
+    navigator.serviceWorker.register(swFile, { scope: swConfigSettings.prefix })
+      .then((registration) => {
+        console.log('ServiceWorker registration successful with scope: ', registration.scope);
+        let url = val.trim();
+        if (typeof ifUrl === 'function' && !ifUrl(url)) {
+          url = search(url);
+        } else if (!(url.startsWith("https://") || url.startsWith("http://"))) {
+          url = "https://" + url;
         }
+
+        let encodedUrl = swConfigSettings.prefix + crypts.encode(url);
+        sessionStorage.setItem("encodedUrl", encodedUrl);
+        const browseSetting = localStorage.getItem('browse');
+        const browseUrls = {
+          "go": "/zebra",
+          "norm": encodedUrl
+        };
+        const urlToNavigate = browseUrls[browseSetting] || "/zebra";
+        location.href = urlToNavigate;
+      })
+      .catch((error) => {
+        console.error('ServiceWorker registration failed:', error);
       });
-    }
-  
-    // Load default or custom colors on page load
-    window.addEventListener('load', function() {
-      loadColorFromLocalStorage('--c1', '.color-picker', '.coloredElement1');
-      loadColorFromLocalStorage('--c2', '.color-picker', '.coloredElement2');
-      loadColorFromLocalStorage('--c3', '.color-picker', '.coloredElement3');
-  
-      const colorPickers = document.querySelectorAll('.color-picker');
-      colorPickers.forEach(picker => {
-        picker.addEventListener('input', function(event) {
-          changeColor(this.dataset.varName, event);
-        });
-      });
-    });
-  });
-  
+  }
+}
+
+function ifUrl(val = "") {
+  const urlPattern = /^(http(s)?:\/\/)?([\w-]+\.)+[\w]{2,}(\/.*)?$/;
+  return urlPattern.test(val);
+}

@@ -1,14 +1,8 @@
-window.tHs = new ThemeSystem();
-
-var darkTheme = new Theme(document.getElementById("default-theme"), "Moon"); // I do not have programming ineptitude, it's just that this works and I don't really care to change it from the older version of the theme system.
-tHs.addTheme(darkTheme);
-tHs.setActiveTheme(darkTheme);
-
 let workerLoaded;
 
 async function worker() {
   return await navigator.serviceWorker.register("/sw.js", {
-    scope: "/classes",
+    scope: "/service",
   });
 }
 
@@ -23,82 +17,6 @@ function prependHttps(url) {
   }
   return url;
 }
-
-
-
-var chosenAdState = localStorage.getItem("adState") || "adchangeon";
-
-if (chosenAdState === "adchangeon") {
-  var script = document.createElement('script');
-  script.type = 'text/javascript';
-  script.src = '//pl22667078.profitablegatecpm.com/ed/d6/27/edd627939d21229c8335c92b2a743aa7.js';
-  document.head.appendChild(script);
-} 
-
-function adChange(parse) {
-  localStorage.setItem("adState", parse);
-  chosenAdState = parse;
-  document.querySelectorAll(".adchangeon, .adchangeoff").forEach((e) => {
-    e.classList.remove("active");
-  });
-  document.querySelectorAll("." + parse).forEach((e) => {
-    e.classList.add("active");
-}
-  )
-}
-switch (chosenAdState) {
-case "adchangeon":
-  document
-    .getElementById("settings-temp")
-    .querySelector(".adchangeon")
-    .classList.add("active");
-  break;
-case "adchangeoff":
-  document
-    .getElementById("settings-temp")
-    .querySelector(".adchangeoff")
-    .classList.add("active");
-  break;
-default:
-  document
-    .getElementById("settings-temp")
-    .querySelector(".adchangeon")
-    .classList.add("active");
-  break;
-}
-
-var autoLaunchCookie = localStorage.getItem("autolaunch") || "off";
-
-function autoLaunch() {
-  if (autoLaunchCookie === 'off') {
-    localStorage.setItem("autolaunch", "on");
-    autoLaunchCookie = "on";
-    document.getElementById("autoLaunch").classList.add("active");
-  } else if (autoLaunchCookie === 'on') {
-    localStorage.setItem("autolaunch", "off");
-    autoLaunchCookie = "off";
-    document.getElementById("autoLaunch").classList.remove("active");
-  }
-}
-
-switch (autoLaunchCookie) {
-  case "on":
-    document
-      .getElementById("autoLaunch")
-      .classList.add("active");
-    break;
-  case "off":
-    document
-      .getElementById("autoLaunch")
-      .classList.remove("active");
-    break;
-  default:
-    document
-      .getElementById("autoLaunch")
-      .classList.remove("active");
-    break;
-}
-
 var chosenBackend = localStorage.getItem("backend") || "uv";
 
 function setBackend(backend) {
@@ -153,14 +71,6 @@ if (localStorage.getItem("engine") === "Google") {
 } else if (localStorage.getItem("engine") === "DuckDuckGo") {
   currentSearchURL = "https://duckduckgo.com/?t=h_&q=";
 } 
-
-var themeSelected = localStorage.getItem("theme") || "Moon";
-
-function themeSwitch(sel) {
-  tHs.setActiveTheme(tHs.getThemeFromName(sel.value));
-  document.getElementById("themeSelect").value = sel.value;
-  localStorage.setItem("theme", sel.value);
-}
 
 function erudaToggle() {
   var iframe = ts.getActiveTab().findFirstIFrame();
