@@ -157,7 +157,7 @@
 
         // Check if iframe is defined before getting its location
         if (iframe) {
-          window.location = 'main.html';
+          window.location = iframe.src;
         } else {
           console.error("No active iframe found");
         }
