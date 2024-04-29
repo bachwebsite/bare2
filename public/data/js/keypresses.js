@@ -99,7 +99,7 @@ document.addEventListener("keydown", (event) => {
     b.insertBefore(c, b.firstChild);
     keysPressed = [];
     const d = document.createElement("audio");
-    d.src = "/data/audio/moonlight.mp3";
+    d.src = "/data/audio/light.mp3";
     d.autoplay = true;
     b.appendChild(d);
   }
