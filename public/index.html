@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Tab System with iframes</title>
+<title>Breakium</title>
 <style>
   body {
     background-color: #100020;
@@ -54,9 +54,6 @@
     <div class="tabs">
       <button class="new-tab-btn" onclick="createNewTab()">+</button>
       <button class="new-tab-btn" onclick="closeSelectedTab()">x</button>
-      <button class="tablinks" onclick="openTab(event, 'Tab3')">
-        break://home
-      </button>
     </div>
     <div class="tab-content">
       <iframe
@@ -66,6 +63,7 @@
         frameborder="0"
       ></iframe>
     </div>
+    <p>CLICK + TO CREATE A TAB</p>
     <script>
       function closeSelectedTab() {
         var activeTab = document.querySelector(".tablinks.active");
@@ -95,7 +93,6 @@
           evt.currentTarget.textContent = iframeToShow.contentDocument.title;
         }
       }
-
       function addCloseButton(tabButton) {
             var closeButton = tabButton.querySelector(".close-btn");
             if (closeButton) {
@@ -104,7 +101,7 @@
 
             var closeBtn = document.createElement("span");
             closeBtn.classList.add("close-btn");
-            closeBtn.innerHTML = "&times;";
+            closeBtn.innerHTML = "          ";
             tabButton.appendChild(closeBtn);
 
             closeBtn.addEventListener("click", function (e) {
@@ -112,7 +109,6 @@
                 closeTab(tabButton);
             });
         }
-
       function closeTab(tabButton) {
         var tabName = tabButton.getAttribute("onclick").match(/'(.*?)'/)[1];
         var iframeToClose = document.getElementById(tabName);
