@@ -50,15 +50,29 @@
   }
 </style>
 </head>
-<body>
-  <div class="tabs">
-    <button class="tablinks" onclick="openTab(event, 'Tab3')">break://home</button>
-    <button class="new-tab-btn" onclick="createNewTab()">+</button>
-</div>
-<div class="tab-content">
-    <iframe id="Tab3" class="tabiframe" src="main.html" frameborder="0"></iframe>
-</div>
-<script>
+  <body>
+    <div class="tabs">
+      <button class="new-tab-btn" onclick="createNewTab()">+</button>
+      <button class="new-tab-btn" onclick="closeSelectedTab()">x</button>
+      <button class="tablinks" onclick="openTab(event, 'Tab3')">
+        break://home
+      </button>
+    </div>
+    <div class="tab-content">
+      <iframe
+        id="Tab3"
+        class="tabiframe"
+        src="main.html"
+        frameborder="0"
+      ></iframe>
+    </div>
+    <script>
+      function closeSelectedTab() {
+        var activeTab = document.querySelector(".tablinks.active");
+        if (activeTab) {
+          closeTab(activeTab);
+        }
+      }
       function openTab(evt, tabName) {
         var iframes = document.getElementsByClassName("tabiframe");
         for (var i = 0; i < iframes.length; i++) {
@@ -109,10 +123,10 @@
 
         var activeTab = document.querySelector(".tablinks.active");
         if (activeTab && activeTab.id === tabName) {
-            var remainingTabs = document.querySelectorAll(".tablinks");
-            if (remainingTabs.length > 0) {
-                remainingTabs[0].click();
-            }
+          var remainingTabs = document.querySelectorAll(".tablinks");
+          if (remainingTabs.length > 0) {
+            remainingTabs[0].click();
+          }
         }
       }
 
@@ -140,9 +154,9 @@
         addCloseButton(newTabButton);
     }
     tabButton.addEventListener("contextmenu", function (e) {
-        e.preventDefault();
-        closeTab(tabButton);
+          e.preventDefault();
+          closeTab(tabButton);
     });
-</script>
+    </script>
 </body>
 </html>
