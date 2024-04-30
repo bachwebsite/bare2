@@ -824,7 +824,9 @@
         }
     </style>
 </head>
-<body>
+<body style="background-color:black;">
+  <div id="darker"></div>
+
     <div style="background-color: var(--base-color)" class="gonav">
         <div class="gonavAlign">
           <a href="/">
@@ -904,19 +906,11 @@
     <!-- inspiration -->
 
     <script src="/data/js/go.js"></script>
-    <script>
-        function loadIframe(url) {
-          const iframe = document.getElementById('iframeId');
-          iframe.src = url;
-        }
-        function setIframe() {
-          let encodedUrl = sessionStorage.getItem("encodedUrl");
-          console.log(encodedUrl);
-          document.getElementById('iframeId').src = encodedUrl;
-        };
-      </script>
-      <script type="text/javascript">setIframe();</script>
-      <script>registerSW()</script>
+    <script src="./data/js/nav.js"></script>
+          <script src="./data/js/cloak/cloakstore.js"></script>
+          <script src="./data/js/cloak/cloak.js"></script>
+
+
 
 </body>
 </html>

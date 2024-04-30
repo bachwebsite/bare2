@@ -10,14 +10,9 @@
      crossorigin="anonymous"></script>
      <script async src="https://arc.io/widget.min.js#CfKt6RMX"></script>
     </head>
-    <body>
-        
-        <center>
-            <input id="search-input" placeholder="> type">
-
-            <input type="text" id="searchInput" placeholder="Search...">
-            <ul id="searchResults"></ul>
-            <div id="content">
+    <body style="background-color:black;">
+        <div id="darker"></div>
+        <div id="content">
                 <button class="bubbly-button"><a onclick="location.href = __uv$config.prefix + __uv$config.encodeUrl('https://youtube.com');">YouTube</a></button>
                 <button class="bubbly-button"><a onclick="location.href = __uv$config.prefix + __uv$config.encodeUrl('https://twitch.tv');">Twitch</a></button>
                 <button class="bubbly-button"><a onclick="location.href = __uv$config.prefix + __uv$config.encodeUrl('https://character.ai');">Character AI</a></button>
@@ -68,38 +63,17 @@
                 <button class="bubbly-button"><a onclick="location.href = __uv$config.prefix + __uv$config.encodeUrl('https://www.wattpad.com/');">Wattpad</a></button>
                 <button class="bubbly-button"><a onclick="location.href = __uv$config.prefix + __uv$config.encodeUrl('https://web.whatsapp.com/');">Whatsapp</a></button>
                 <button class="bubbly-button"><a onclick="location.href = __uv$config.prefix + __uv$config.encodeUrl('https://www.y8.com/');">Y8Games</a></button>
-        </div>
-        </center>
+                <select id="cloakSelect"></select>
+            </div>
 
         <script src="/uv/uv.bundle.js"></script>
         <script src="/uv/uv.config.js"></script>
         <script src="./data/js/index.js"></script>
         <script src="./data/js/color.js"></script>
-        <script>
-            const searchInput = document.getElementById('searchInput');
-            const content = document.getElementById('content').getElementsByTagName('button');
+        <script src="./data/js/nav.js"></script>
+        <script src="./data/js/cloak/cloakstore.js"></script>
+        <script src="./data/js/cloak/cloak.js"></script>
 
-            searchInput.addEventListener('input', function() {
-                const query = searchInput.value.toLowerCase();
 
-                const matchingButtons = Array.from(content).filter(function(button) {
-                    const text = button.innerText.toLowerCase();
-                    return text.includes(query);
-                });
-
-                matchingButtons.sort(function(a, b) {
-                    return a.innerText.localeCompare(b.innerText);
-                });
-
-                Array.from(content).forEach(function(button) {
-                    button.style.display = 'none'; // Hide all buttons
-                });
-
-                matchingButtons.forEach(function(button) {
-                    button.style.display = 'block'; // Show matching buttons in alphabetical order
-                });
-            });
-
-        </script>
     </body>
 </html>

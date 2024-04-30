@@ -34,6 +34,9 @@ app.get('/math', (req, res) => {
 app.get('/go', (req, res) => {
   res.sendFile(path.join(process.cwd(), '/public/q.html'));
 });
+app.get('/@', (req, res) => {
+  res.sendFile(path.join(process.cwd(), '/public/s.html'));
+});
 
 app.get("/search=:query", async (req, res) => {
   const { query } = req.params;

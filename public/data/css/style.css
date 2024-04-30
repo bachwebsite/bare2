@@ -14,34 +14,44 @@ body {
   margin: 0;
   padding: 0;
   background: url('/data/images/bg_purple.png');
+  background-attachment: fixed;
   font-family: 'FONT2', sans-serif; 
 }
 #darker {
-  position: absolute;
-  opacity: 0.95;
+  position: absolute sticky;
+  opacity: 0.5;
   z-index: -1;
   background-color: black;
-  width: 100vw;
-  height:100vh;
+  width: 100%;
+  height:100%;
 }
 #counter {
   border: 2px solid #875dff;
   border-radius: 50px;
 }
 .bubbly-button {
-  display: block;
-  border: 1px solid #875dff;
-  width: 70vw;
-  margin-top: 10px;
-  height: 100px;
-  background-color: #875dff;
+  display: inline-block;
+  border: 2px solid linear-gradient(133deg, rgba(0,0,0,1) 0%, rgba(75,0,66,1) 100%);
+  margin: 20px;
+  height: 70px;
+  border-radius: 10px;
+  background: linear-gradient(133deg, rgba(24,0,40,1) 0%, rgba(17,66,187,1) 100%);
   cursor: pointer;
+  transition: transform 0.3s cubic-bezier(0.175, 0.485, 0.32, 0.875);
 }
 .bubbly-button>a {
-  font-size: 70px;
-  color: #8a11ff;
+  font-size: 40px;
+  color: #8060bb;
   font-family: 'FONT2', sans-serif;
+  letter-spacing: 2px;
 }
+
+.bubbly-button:hover {
+  box-shadow: 0px -18px 18px 10px rgba(0,0,0,0.58);
+  transform: scale3d(5);
+  transform: translateY(10px);
+}
+
 .proxywrapper {
  width: 100%;
  height: 90vh;
@@ -175,4 +185,31 @@ nav>a {
 nav>span {
   margin-left: 100px;
   float: left;
+}
+i {
+  fill: none;
+}
+.islands {
+  display: block;
+  justify-content: center;
+  align-items: center;
+  width: 40vw;
+  height: 50vh;
+  margin-top: 50px;
+  border: 4px solid #200530;
+  border-radius: 40px;
+  background-color: #6317a9;
+}
+
+#cloakSelect {
+  display: none;
+  background-color: #200530;
+  color: blueviolet;
+  height: 50px;
+  font-size: 20px;
+  font-family: 'FONT2', sans-serif;
+  letter-spacing: 2px;
+}
+.visible {
+  display: block !important;
 }

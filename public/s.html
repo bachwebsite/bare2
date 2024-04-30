@@ -7,47 +7,24 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&family=Jacquarda+Bastarda+9&family=Manrope:wght@200..800&family=Quicksand:wght@300..700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="./data/css/settings.css">
+    <link rel="stylesheet" href="./data/css/style.css">
     <link rel="stylesheet" href="./data/css/root.css">
     <script async src="https://arc.io/widget.min.js#CfKt6RMX"></script>
     <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1499389693327166"
      crossorigin="anonymous"></script>
-    <title>Settings</title>
 </head>
 
-<body>
-    <input id="search-input" placeholder="> type">
-
+<body style="background-color:black;">
     <div id="loading">
         <img id="loading-image" src="./data/images/loading.gif" alt="Loading..." />
     </div>
-    <div class="proxywrapper">
-        <center>
-            <nav><p style="color: var(--c3);" onclick="window.location = '/';">Home</p></nav>
-            <div class="islands">
-                <h1>themes</h1>
-                <h4>Choose your theme for Breakium.pw</h4>
-                <div class="islands inside">
-                    <div id="theme-dropdown" onclick="openOptions();">
-                        <select>
-                            <option value="light">Light</option>
-                            <option value="dark">Dark</option>
-                            <option value="crimson">Crimson</option>
-                            <option value="amethyst">Amethyst</option>
-                            <option value="sapphire">Sapphire</option>
-                            <option value="emerald">Emerald</option>
-                            <option value="gold">Gold</option>
-                            <option value="scarlet">Scarlet</option>
-                            <option value="custom">Custom</option>
-                          </select>
-                    </div>
-                </div>
-            </div>
-            <div class="islands">apps</div>
-            <br><br><br>
-            
-        </center>
-    </div>
+    <div id="darker"></div>
+    <center>
+        <div class="islands" id="cloaks">
+            <h1>Cloaks</h1>
+            <select id="cloakSelect" class="visible"></select>
+        </div>
+    </center>
     <script src="/uv/uv.bundle.js"></script>
     <script src="/uv/uv.config.js"></script>
     <script src="./data/js/index.js"></script>
@@ -58,6 +35,9 @@
     
     <script defer src="data/js/friconix.js"> </script>
     <script src="https://kit.fontawesome.com/671b9764c1.js" crossorigin="anonymous"></script>
+    <script src="./data/js/nav.js"></script>
+    <script src="./data/js/cloak/cloak.js"></script>
+
 </body>
 
 </html>

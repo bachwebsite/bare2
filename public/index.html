@@ -11,12 +11,10 @@
     <link rel="stylesheet" href="./data/css/root.css">
     <link rel="stylesheet" href="./data/css/style.css">
     <script async src="https://arc.io/widget.min.js#CfKt6RMX"></script>
-    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/font-awesome.min.css">
     <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1499389693327166"
      crossorigin="anonymous"></script><!-- Google tag (gtag.js) -->
      <script async src="https://www.googletagmanager.com/gtag/js?id=G-71YXG1KMKT"></script>
-     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
-    <link rel="stylesheet" href="https://site-assets.fontawesome.com/releases/v6.4.2/css/all.css">
+     <link href="https://cdn.jsdelivr.net/gh/eliyantosarage/font-awesome-pro@main/fontawesome-pro-6.5.1-web/css/all.min.css" rel="stylesheet">
      <script>
       window.dataLayer = window.dataLayer || [];
       function gtag(){dataLayer.push(arguments);}
@@ -27,29 +25,21 @@
     <title>breakium</title>
 </head>
 
-<body>
+<body style="background-color:black;">
   <div id="container">
     <div id="loading">
         <img id="loading-image" src="./data/images/loading.gif" alt="Loading..." />
     </div>
     <div id="darker"></div>
-    <nav>
-      <a href="/main.html">breakium </a><br>
-      <a href="/english">games </a><br>
-      <a href="/math">phones </a><br>
-      <a href="/science">apps </a>
-      <span id="span">_time</span><br>
-    </nav>
     <center>
       <div id="mm">
-        <!--<form id="form">
-          <input id="adrbar" type="text" placeholder="type URL or search Google"/>                    
-        </form>-->
         <form id="uv-form" class="searchbar-center">
           <div class="searchbar-input-spacer"></div>
           <input id="uv-address" type="text" class="searchbar-input" autocomplete="off" title="Search" role="combobox" placeholder="search" />
         </form>
       </div>
+      <select id="cloakSelect"></select>
+
     </center>  
   </div>
     <script src="uv/uv.bundle.js"></script>
@@ -57,21 +47,6 @@
     <script src="uv/uv.sw.js"></script>
     <script src="uv/uv.client.js"></script>
     <script src="./sw.js"></script>
-    <script>
-      var span = document.getElementById('span'); 
-      function time() {var d = new Date();
-        var s = d.getSeconds();
-        var m = d.getMinutes();
-        var h = d.getHours();
-        span.textContent = ("0" + h).substr(-2) + ":" + ("0" + m).substr(-2) + ":" + ("0" + s).substr(-2);
-      }
-      setInterval(time, 1000);
-      console.log(time, 1000);
-
-      window.onload = function() {
-        window.parent.postMessage({ title: document.title, source: window.frameElement.id }, '*');
-      };
-    </script>
     
     
 
@@ -83,6 +58,10 @@
     <script src="./data/js/tabsys.js"></script>
     <script src="./data/js/siba.js"></script>
     <script src="./data/js/keypresses.js"></script>
+    <script src="./data/js/nav.js"></script>
+          <script src="./data/js/cloak/cloakstore.js"></script>
+          <script src="./data/js/cloak/cloak.js"></script>
+
     
 
     <script defer src="./data/js/friconix.js"> </script>
