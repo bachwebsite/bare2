@@ -8,37 +8,47 @@ import compression from 'compression';
 import chalk from 'chalk';
 import 'dotenv/config';
 import path from "node:path";
+import { dynamicPath } from "@nebula-services/dynamic";
 
 let port = parseInt(process.env.PORT || "");
-
 if (isNaN(port)) port = 2100;
 
 const bare = createBareServer("/bare/");
 const app = express();
 
-const __filename = fileURLToPath(import.meta.url);
-const __dirname = dirname(__filename);
+const __dirname = process.cwd();
 
+app.use("/public/dynamic/", express.static(dynamicPath))
 app.get('/', (req, res) => {
-  res.sendFile(path.join(__dirname, '/public/index.html'));
+  res.sendFile(path.join(process.cwd(), '/public/index.html'));
 });
 app.get('/english', (req, res) => {
-  res.sendFile(path.join(__dirname, '/public/g.html'));
+  res.sendFile(path.join(process.cwd(), '/public/g.html'));
 });
 app.get('/science', (req, res) => {
-  res.sendFile(path.join(__dirname, '/public/a.html'));
+  res.sendFile(path.join(process.cwd(), '/public/a.html'));
 });
 app.get('/math', (req, res) => {
-  res.sendFile(path.join(__dirname, '/public/p.html'));
+  res.sendFile(path.join(process.cwd(), '/public/p.html'));
 });
-app.get('/zebra', (req, res) => {
-  res.sendFile(path.join(__dirname, '/public/q.html'));
+app.get('/go', (req, res) => {
+  res.sendFile(path.join(process.cwd(), '/public/q.html'));
+});
+
+app.get("/search=:query", async (req, res) => {
+  const { query } = req.params;
+
+  const response = await fetch(
+    `http://api.duckduckgo.com/ac?q=${query}&format=json`
+  ).then((apiRes) => apiRes.json());
+
+  res.send(response);
 });
 
 app.use(compression());
-app.use(express.static(__dirname + "/public/"));
-app.use("/uv/", express.static(__dirname + "/uv/"));
-app.use("/dynamic/", express.static(__dirname + "/dynamic/"));
+app.use(express.static(process.cwd() + "/public/"));
+app.use("/public/uv/", express.static(process.cwd() + "/uv/"));
+app.use("/public/dynamic/", express.static(process.cwd() + "/dynamic/"));
 
 app.use((req, res) => {
   res.status(404);

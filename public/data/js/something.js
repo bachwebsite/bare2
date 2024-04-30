@@ -23,7 +23,27 @@ const errorCode = document.getElementById("uv-error-code");
 
 const input = document.querySelector("input");
 
-// crypts class definition
+const swConfig = {
+  'uv': { file: '/uv/sw.js', config: __uv$config },
+  'dynamic': { file: '/dynamic/sw.js', config: __dynamic$config }
+};
+function registerSW() {
+  if (localStorage.getItem("registerSW") === "true") {
+    var proxySetting = localStorage.getItem('proxy') || 'uv';
+    let { file: swFile, config: swConfigSettings } = swConfig[proxySetting];
+
+    navigator.serviceWorker.register(swFile, { scope: swConfigSettings.prefix })
+      .then((registration) => {
+        console.log('ServiceWorker registration successful with scope: ', registration.scope);
+      })
+      .catch((error) => {
+        console.error('ServiceWorker registration failed:', error);
+      });
+  }
+}
+
+
+
 class crypts {
   static encode(str) {
     return encodeURIComponent(
@@ -66,11 +86,12 @@ function search(input) {
     }
   }
 }
-
 if ('serviceWorker' in navigator) {
   var proxySetting = localStorage.getItem('proxy') || 'uv';
   let swConfig = {
-    'uv': { file: '/uv/sw.js', config: __uv$config }
+    'uv': { file: '/uv/sw.js', config: __uv$config },
+    'dynamic': { file: '/dynamic/sw.js', config: __dynamic$config }
+
   };
 
   let { file: swFile, config: swConfigSettings } = swConfig[proxySetting];
@@ -80,9 +101,17 @@ if ('serviceWorker' in navigator) {
       console.log('ServiceWorker registration successful with scope: ', registration.scope);
       form.addEventListener('submit', async (event) => {
         event.preventDefault();
-        
+
         let encodedUrl = swConfigSettings.prefix + crypts.encode(search(address.value));
-        location.href = encodedUrl;
+        sessionStorage.setItem("encodedUrl", encodedUrl);
+        const browseSetting = localStorage.getItem('browse');
+        const browseUrls = {
+          "go": "/go",
+          "norm": encodedUrl
+        };
+
+        const urlToNavigate = browseUrls[browseSetting] || "/go";
+        location.href = urlToNavigate;
       });
     })
     .catch((error) => {
@@ -90,41 +119,41 @@ if ('serviceWorker' in navigator) {
     });
 }
 
-var proxySetting = 'uv';
-let swConfig = {
-  'uv': { file: '/uv/sw.js', config: __uv$config }
-};
-
-let { file: swFile, config: swConfigSettings } = swConfig[proxySetting];
-
-async function registerSW() {
-  if (!navigator.serviceWorker)
-    throw new Error("Your browser doesn't support service workers.");
-
-  // Ultraviolet has a stock `sw.js` script.
-  await navigator.serviceWorker.register(stockSW, {
-    scope: __uv$config.prefix,
-  });
-}
 
 function launch(val) {
-  var proxySetting = 'uv';
-  let swConfig = {
-    'uv': { file: '/uv/sw.js', config: __uv$config }
-  };
+  if ('serviceWorker' in navigator) {
+    let proxySetting = localStorage.getItem('proxy') || 'uv';
+    let swConfig = {
+      'uv': { file: '/uv/sw.js', config: __uv$config },
+      'dynamic': { file: '/dynamic/sw.js', config: __dynamic$config }
+    };
 
-  let { file: swFile, config: swConfigSettings } = swConfig[proxySetting];
+    let { file: swFile, config: swConfigSettings } = swConfig[proxySetting];
 
-  window.navigator.serviceWorker
-      .register(swFile, { scope: swConfigSettings.prefix })
-      .then(() => {
-          let url = val.trim();
-          if (!ifUrl(url)) url = "https://www.google.com/search?q=" + url;
-          else if (!(url.startsWith("https://") || url.startsWith("http://")))
-              url = "https://" + url;
-          var uvUrl = __uv$config.prefix + __uv$config.encodeUrl(url);
-          location.href = uvUrl;
+    navigator.serviceWorker.register(swFile, { scope: swConfigSettings.prefix })
+      .then((registration) => {
+        console.log('ServiceWorker registration successful with scope: ', registration.scope);
+        let url = val.trim();
+        if (typeof ifUrl === 'function' && !ifUrl(url)) {
+          url = search(url);
+        } else if (!(url.startsWith("https://") || url.startsWith("http://"))) {
+          url = "https://" + url;
+        }
+
+        let encodedUrl = swConfigSettings.prefix + crypts.encode(url);
+        sessionStorage.setItem("encodedUrl", encodedUrl);
+        const browseSetting = localStorage.getItem('browse');
+        const browseUrls = {
+          "go": "/go",
+          "norm": encodedUrl
+        };
+        const urlToNavigate = browseUrls[browseSetting] || "/go";
+        location.href = urlToNavigate;
+      })
+      .catch((error) => {
+        console.error('ServiceWorker registration failed:', error);
       });
+  }
 }
 
 function ifUrl(val = "") {

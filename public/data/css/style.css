@@ -1,6 +1,10 @@
 @font-face {
   font-family: 'FONT1', sans-serif;
-  src: url('./data/fonts/AlteHaasGroteskRegular.ttf');
+  src: url('/data/fonts/AlteHaasGroteskRegular.ttf');
+}
+@font-face {
+  font-family: 'FONT2';
+  src: url('/data/fonts/Tempura.ttf');
 }
 
 * {
@@ -10,11 +14,11 @@ body {
   margin: 0;
   padding: 0;
   background: url('/data/images/bgg.jpg');
-  font-family: 'FONT1', sans-serif; 
+  font-family: 'FONT2', sans-serif; 
 }
 #darker {
   position: absolute;
-  opacity: 0.75;
+  opacity: 0.95;
   z-index: -1;
   background-color: black;
   width: 100vw;
@@ -36,19 +40,7 @@ body {
 .bubbly-button>a {
   font-size: 70px;
   color: #8a11ff;
-  font-family: 'FONT1', sans-serif;
-}
-#uv-address {
-  display: inline-block; 
-  border: 2px solid #875dff;
-  width: 10vw;
-  height: 50px;
-  transition: 0.5s ease-in-out;
-  background-color: #875dff;
-  color: #8a11ff;
-  text-align: center;
-  font-size: 25px;
-  font-family: 'FONT1', sans-serif;
+  font-family: 'FONT2', sans-serif;
 }
 .proxywrapper {
  width: 100%;
@@ -65,7 +57,7 @@ body {
   text-align: center;
   font-size: 50px; 
   font-weight: bold;
-  font-family: 'FONT1', sans-serif;
+  font-family: 'FONT2', sans-serif;
 }
 h5#title {
   font-size: 14px;
@@ -92,7 +84,7 @@ div.navy {
 
 div.navy>i {
   font-size: 30px;
-  font-family: 'FONT1', sans-serif;
+  font-family: 'FONT2', sans-serif;
   border-radius: 10%;
 }
 
@@ -129,25 +121,24 @@ div.navy>i {
   justify-content: center;
   align-items: center;
   text-align: center;
-  border: 2px solid #875dff;
+  border: 4px solid #100020;
   width: calc(100% - 100px);
   height: 50px;
   transition: 0.5s ease-in-out;
-  background-color: #8a11ff;
+  background-color: transparent;
+  border-radius: 10px;
   text-align: center;
   color: white;
   font-size: 25px;
-  font-family: 'FONT1', sans-serif;
+  font-family: 'FONT2', sans-serif;
   margin-bottom: auto;
   margin-top: 50px;
 }
 #uv-address:hover {
-  border: 1px solid #875dff;
   width: calc(100% - 50px);
   transition: 0.5s ease-in-out;
 }
 #uv-address:focus {
-  border: 1px solid #875dff;
   width: calc(100% - 40px);
   transition: 0.5s ease-in-out;
 }
