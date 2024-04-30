@@ -6,7 +6,7 @@ const cloaks = [
   },
   {
     name: "clever",
-    title: "Clever | Login",
+    title: "Clever | Portal",
     favicon: "https://assets.clever.com/launchpad/1b48a8a36/favicon.ico",
   },
   {

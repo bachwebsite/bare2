@@ -39,28 +39,30 @@
         </form>
       </div>
       <select id="cloakSelect"></select>
+      <div id="billboard">
+        <img src="">
+      </div>
 
     </center>  
   </div>
     <script src="uv/uv.bundle.js"></script>
     <script src="uv/uv.config.js"></script>
     <script src="uv/uv.sw.js"></script>
-    <script src="uv/uv.client.js"></script>
     <script src="./sw.js"></script>
-    
+    <script src="/dynamic/dynamic.config.js"></script>
+    <script>
+      const worker = new Worker("/dynamic/dynamic.worker.js");
+    </script>
     
 
     <script src="./data/js/index.js"></script>
     <script src="./data/js/loading.js"></script>
     <script src="./data/js/color.js"></script>
     <script src="./data/js/custom-friconix.js"></script>
-    <script src="./data/js/moveis.js"></script>
-    <script src="./data/js/tabsys.js"></script>
     <script src="./data/js/siba.js"></script>
     <script src="./data/js/keypresses.js"></script>
     <script src="./data/js/nav.js"></script>
-          <script src="./data/js/cloak/cloakstore.js"></script>
-          <script src="./data/js/cloak/cloak.js"></script>
+    <script src="./data/js/cloak/cloak.js"></script>
 
     
 
