@@ -39,6 +39,8 @@
         </form>
       </div>
       <select id="cloakSelect"></select>
+      <input type="text" id="panickey" maxlength="1"></input>
+      <input type="text" id="panicurl"></input>
       <div id="billboard">
         <img src="">
       </div>
@@ -50,6 +52,8 @@
     <script src="uv/uv.sw.js"></script>
     <script src="./sw.js"></script>
     <script src="/dynamic/dynamic.config.js"></script>
+    <script src="./data/js/cloak/panic.js"></script>
+
     <script>
       const worker = new Worker("/dynamic/dynamic.worker.js");
     </script>

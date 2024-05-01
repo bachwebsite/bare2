@@ -99,11 +99,9 @@ const cloaks = [
   },
 ];
 
-function printWithColor(msg, color) {
-  console.log("%c" + msg, "color:" + color + ";font-weight:bold");
-}
-
 const selectElement = document.getElementById("cloakSelect");
+
+function printWithColor(a, b) {console.log("%c" + a, "color:" + b + ";font-weight:bold");}
 
 function populateSelectOptions(cloaks) {
   cloaks.forEach((cloak) => {

@@ -38,6 +38,13 @@ const j = document.createElement('link');
       k.appendChild(l);
       w.appendChild(k);
 
+      const m = document.createElement('a');
+      m.href = '//discord.gg/dDZZVEFTtQ';
+      const n = document.createElement('i');
+      n.classList.add('fa-brands', 'fa-discord');
+      m.appendChild(n);
+      w.appendChild(m);
+
       const y = document.createElement('span');
       y.id = 'span';
       const x = document.createElement('i');
