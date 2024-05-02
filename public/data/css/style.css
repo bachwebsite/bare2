@@ -267,3 +267,14 @@ i {
   transform: scale3d(5);
   transform: translateY(10px);
 }
+
+#banner {
+  margin-top: 50px;
+  border: 4px solid #200000;
+  border-radius: 10px;
+  transition: transform 0.3s cubic-bezier(0.175, 0.485, 0.32, 0.875);
+}
+#banner:hover {
+  transform: scale3d(5);
+  transform: translateY(10px);
+}
