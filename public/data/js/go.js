@@ -46,33 +46,6 @@ function toggleFullScreen() {
     }
 }
 
-var devToggle = "false";
-
-function inspectelement() {
-    if (devToggle == "true") {
-        eruda.destroy();
-        devToggle = "false";
-        console.log(devToggle);
-    } else if (devToggle == "false") {
-        eruda.init();
-        eruda
-            .add(erudaOrientation)
-            .add(erudaBenchmark)
-            .add(erudaCode)
-            .add(erudaTiming)
-            .add(erudaFeatures)
-            .add(erudaMonitor)
-            devToggle = "true";
-            console.log(devToggle);
-
-    }
-};
-eruda.init();
-eruda.hide();
-setTimeout(function () {
-    eruda.destroy();
-}, 30);
-
 
 function newTab() {
     window.open(document.getElementById("iframeId").src);
@@ -125,9 +98,7 @@ class crypts {
     let swConfig = {
       'uv': { file: '/sw.js', config: __uv$config },
     };
-  
     let { file: swFile, config: swConfigSettings } = swConfig[proxySetting];
-  
     navigator.serviceWorker.register(swFile, { scope: swConfigSettings.prefix })
       .then((registration) => {
         console.log('ServiceWorker registration successful with scope: ', registration.scope);

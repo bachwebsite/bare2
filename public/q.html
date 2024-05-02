@@ -4,8 +4,31 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Desmos</title>
+    
+    <script src="/data/js/eruda/eruda.js"></script>
+    <script src="/data/js/eruda/plugins/eruda-benchmark.js"></script>
+    <script src="/data/js/eruda/plugins/eruda-code.js"></script>
+    <script src="/data/js/eruda/plugins/eruda-features.js"></script>
+    <script src="/data/js/eruda/plugins/eruda-monitor.js"></script>
+    <script src="/data/js/eruda/plugins/eruda-orientation.js"></script>
+    <script src="/data/js/eruda/plugins/eruda-timing.js"></script>
+
+    <!-- uv vvv -->
+
+    <script src="/uv/uv.bundle.js"></script>
+    <script src="/uv/uv.config.js"></script>
+
+    <!-- dynamic (you never know) -->
+
+    <script src="/dynamic/dynamic.worker.js"></script>
+    <script src="/dynamic/dynamic.config.js"></script>
     <style>
-        * { margin: 0; padding: 0; overflow-x: hidden; overflow-y: hidden;}
+      @font-face {
+        font-family: 'FONT2';
+        src: url('/data/fonts/Tempura.ttf');
+      }
+      
+      * { margin: 0; padding: 0; overflow-x: hidden; overflow-y: hidden;}
 
         #iframeId {
             width: 100vw;
@@ -13,24 +36,13 @@
             z-index: 1;
             border:none;
         }
-        @import url('https://fonts.googleapis.com/css?family=Poppins');
-
-        :root {
-        --theme-color: #ffffff;
-        --shadow-color: #ffffff;
-        --bgshadow-color: #ffffff;
-        --base-color: rgba(25, 25, 25);
-        }
 
         body {
         top: 50%;
         font-family: Poppins;
-        color: #4c4c4c;
-        background-image: url("/assets/imgs/bg/bgdark.jpg");
-        background-attachment: fixed;
-        background-size: cover;
-        background-repeat: no-repeat;
+        color: lightpink;
         text-align: center;
+        background: url('/data/images/loading.gif') no-repeat;
         transition: 0.5s;
         scroll-behavior: smooth;
         }
@@ -69,8 +81,7 @@
         z-index: 10000;
         left: 50%;
         background: transparent;
-        box-shadow: 0 0 10px rgba(0, 0, 0, 0.59);
-        backdrop-filter: blur(5px);
+        backdrop-filter: blur(1px);
         text-align: center;
         align-content: center;
         align-items: center;
@@ -97,13 +108,6 @@
 
         }
 
-        .navbarLink:hover {
-        box-shadow: 0 0 15px 1px var(--shadow-color), 0 0 1px 1px var(--theme-color);
-        transition: 0.3s;
-        background-color: #000;
-        transform: translateY(-3px)
-        }
-
         .navbarLink img {
         width: 26px;
         display: inline-flex;
@@ -118,11 +122,6 @@
         will-change: auto;
         margin: 0;
         margin-right: 1px;
-        }
-
-        .navbarLink:hover img {
-        animation: rotate 0.5s ease-in-out;
-        transition: all 0.3s ease-in-out;
         }
 
         @keyframes rotate {
@@ -148,7 +147,7 @@
         z-index: 10000;
         left: 50%;
         background: transparent;
-        box-shadow: 0 0 10px rgba(0, 0, 0, 0.59);
+        border: 2px solid black;
         backdrop-filter: blur(5px);
         text-align: center;
         align-content: center;
@@ -164,7 +163,7 @@
         display: flex;
         }
 
-        .gonavLink {
+        .buttin {
         height: 26px;
         border-radius: 20px;
         margin-left: 0.4vw;
@@ -175,12 +174,7 @@
         padding: 5px;
         }
 
-        .gonavLink:hover {
-        transition: 0.3s;
-        transform: translateY(-3px)
-        }
-
-        .gonavLink img {
+        .buttin img {
         width: 26px;
         display: inline-flex;
         margin-left: -6px;
@@ -189,17 +183,12 @@
         transition: 1s;
         }
 
-        .gonavLink p {
+        .buttin p {
         vertical-align: top;
         display: inline-flex;
         will-change: auto;
         margin: 0;
         margin-right: 1px;
-        }
-
-        .gonavLink:hover img {
-        animation: rotate 0.5s ease-in-out;
-        transition: all 0.3s ease-in-out;
         }
 
 
@@ -225,12 +214,6 @@
         .setting h1 {
         margin-top: 0px;
         font-size: 22px;
-        }
-
-        .setting:hover {
-        border: 1px solid var(--theme-color);
-        transform: translateY(-5px);
-        transition: 0.2s ease-in-out;
         }
 
         .settingcontainer {
@@ -318,13 +301,6 @@
         will-change: transform;
         }
 
-
-        button:hover {
-        color: #fff;
-        background-color: #232323;
-        transform: translateY(-2px);
-        }
-
         button:active {
         box-shadow: none;
         transform: translateY(0);
@@ -338,16 +314,17 @@
         }
 
         .setting-input__input {
-        font-family: inherit;
+        
+        font-family: 'FONT2', sans-serif;
         font-size: 16px;
         border: none;
         background-color: #000;
-        color: var(--theme-color);
+        color: white;
         padding: 0.7rem 1rem;
         border-radius: 25px;
         width: 90%;
         height: 24px;
-        opacity: 1;
+        opacity: 0.3;
         text-align: center;
         }
 
@@ -403,14 +380,6 @@
         color: #b6bab7;
         }
 
-        .app:hover {
-        background-color: rgba(255, 255, 255, 0.30);
-        border: 1px solid var(--theme-color);
-        transform: scale(1.06);
-        cursor: pointer;
-        transition: 0.3s;
-        }
-
         .appcontainer {
         display: flex;
         flex-direction: row;
@@ -448,20 +417,11 @@
         border: 1px solid var(--theme-color);
         }
 
-        .shortcut:hover {
-        box-shadow: 0 0 15px 1px var(--shadow-color), 0 0 1px 1px var(--theme-color);
-        transition: 0.5s;
-        }
-
         .shortcut img {
         width: 26px;
         display: block;
         margin-left: 1px;
         height: auto;
-        transition: 1s;
-        }
-
-        .shortcut img:hover {
         transition: 1s;
         }
 
@@ -541,11 +501,6 @@
         .style1::-moz-color-swatch {
         border-radius: 15px;
         border: none;
-        }
-
-        .style1:hover {
-        transform: scale(1.1);
-        transition: 0.5s;
         }
 
 
@@ -699,12 +654,6 @@
         outline: 1px solid var(--theme-color);
         transition: 0.5s;
         }
-
-        .group:hover {
-        transition: 0.5s;
-        box-shadow: 0px 0px 60px var(--shadow-color);
-        }
-
         .card {
         top: 50%;
         left: 50%;
@@ -813,12 +762,6 @@
         transition: 0.3s;
         }
 
-        .suggestion-list div:hover {
-        box-shadow: 0 0 15px 1px var(--shadow-color), 0 0 1px 1px var(--theme-color);
-        transition: 0.3s;
-        background-color: #000;
-        }
-
         #customCloakinput {
         display: none;
         }
@@ -830,85 +773,59 @@
     <div style="background-color: var(--base-color)" class="gonav">
         <div class="gonavAlign">
           <a href="/">
-            <div class="gonavLink">
-              <img style="margin-top: 5px; animation: none;" src="assets/imgs/goicons/home.png" />
+            <div class="buttin">
+              <img style="margin-top: 5px; animation: none;" src="/data/images/icons/home.png" />
             </div>
           </a>
     
           <a onclick="back()">
-            <div class="gonavLink">
-              <img style="margin-top: 5px;animation: none; margin-right: -10px" src="assets/imgs/goicons/backward.png" />
+            <div class="buttin">
+              <img style="margin-top: 5px;animation: none;" src="/data/images/icons/backward.png" />
             </div>
           </a>
     
           <a onclick="reload()">
-            <div class="gonavLink">
-              <img style="margin-top: 5px;" class="settingnav" src="assets/imgs/goicons/reload.png" />
+            <div class="buttin">
+              <img style="margin-top: 5px;" class="settingnav" src="/data/images/icons/reload.png" />
             </div>
           </a>
     
           <a onclick="forward()">
-            <div class="gonavLink">
-              <img style="margin-top: 5px; animation: none; margin-left: -10px;" src="assets/imgs/goicons/forward.png" />
+            <div class="buttin">
+              <img style="margin-top: 5px; animation: none; margin-left: -10px;" src="/data/images/icons/forward.png" />
             </div>
           </a>
     
-          <div class="setting-input" style="width: 185px; position: relative; margin-right:10px; margin-top: 1.5vh;">
+          <div class="setting-input" style="width: 185px; position: relative; margin-right:10px; margin-top: 7px;">
             <form id="uv-form">
-              <input placeholder="Search or type a URL" id="uv-address" style="max-height: 10px; padding: 10px;"
+              <input placeholder="type as you must" id="uv-address" style="max-height: 10px; padding: 10px; letter-spacing: 1px;"
                 class="setting-input__input" type="text" />
             </form>
           </div>
     
-          <a onclick="inspectelement()">
-            <div class="gonavLink">
-              <img style="margin-top: 5px;animation: none" src="assets/imgs/goicons/inspect.png" />
-            </div>
-          </a>
-    
-          <a onclick="newTab()">
-            <div style="min-width: 20px; max-width: 20px" class="gonavLink">
-              <img style="margin-top: 5px;animation: none" src="assets/imgs/goicons/new-tab.png" />
-            </div>
-          </a>
-    
           <a onclick="toggleFullScreen()">
-            <div class="gonavLink">
-              <img style="margin-top: 5px;animation: none" src="assets/imgs/goicons/fullscreen.png" />
+            <div class="buttin">
+              <img style="margin-top: 5px;animation: none" src="/data/images/icons/fullscreen.png" />
             </div>
           </a>
     
         </div>
       </div>
     <iframe src="" frameborder="0" id="iframeId"></iframe>
-
-    <!-- eruda vvv -->
-
-    <script src="/assets/js/eruda/eruda.js"></script>
-    <script src="/assets/js/eruda/plugins/eruda-benchmark.js"></script>
-    <script src="/assets/js/eruda/plugins/eruda-code.js"></script>
-    <script src="/assets/js/eruda/plugins/eruda-features.js"></script>
-    <script src="/assets/js/eruda/plugins/eruda-monitor.js"></script>
-    <script src="/assets/js/eruda/plugins/eruda-orientation.js"></script>
-    <script src="/assets/js/eruda/plugins/eruda-timing.js"></script>
-    <script src="/assets/js/eruda/plugins/eruda-touches.js"></script>
-
-    <!-- uv vvv -->
-
-    <script src="/uv/uv.bundle.js"></script>
-    <script src="/uv/uv.config.js"></script>
-
-    <!-- dynamic (you never know) -->
-
-    <script src="/dynamic/dynamic.worker.js"></script>
-    <script src="/dynamic/dynamic.config.js"></script>
-
-    <!-- inspiration -->
-
+    <script>
+      function loadIframe(url) {
+        const iframe = document.getElementById('iframeId');
+        iframe.src = url;
+      }
+      function setIframe() {
+        let encodedUrl = sessionStorage.getItem("encodedUrl");
+        console.log(encodedUrl);
+        document.getElementById('iframeId').src = encodedUrl;
+      };
+    </script>
+    <script type="text/javascript">setIframe();</script>
     <script src="/data/js/go.js"></script>
-    <script src="./data/js/nav.js"></script>
-          <script src="./data/js/cloak/cloakstore.js"></script>
-          <script src="./data/js/cloak/cloak.js"></script>
+    <script src="./data/js/cloak/cloak.js"></script>
 
 
 
