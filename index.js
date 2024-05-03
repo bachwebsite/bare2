@@ -31,7 +31,7 @@ app.get('/science', (req, res) => {
 app.get('/math', (req, res) => {
   res.sendFile(path.join(process.cwd(), '/public/p.html'));
 });
-app.get('/go', (req, res) => {
+app.get('/app', (req, res) => {
   res.sendFile(path.join(process.cwd(), '/public/q.html'));
 });
 app.get('/@', (req, res) => {

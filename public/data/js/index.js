@@ -107,11 +107,11 @@ if ('serviceWorker' in navigator) {
         sessionStorage.setItem("encodedUrl", encodedUrl);
         const browseSetting = localStorage.getItem('browse');
         const browseUrls = {
-          "go": "/go",
+          "go": "/app",
           "norm": encodedUrl
         };
 
-        const urlToNavigate = browseUrls[browseSetting] || "/go";
+        const urlToNavigate = browseUrls[browseSetting] || "/app";
         location.href = urlToNavigate;
       });
     })
@@ -146,10 +146,10 @@ function launch(val) {
         sessionStorage.setItem("encodedUrl", encodedUrl);
         const browseSetting = localStorage.getItem('browse');
         const browseUrls = {
-          "go": "/go",
+          "go": "/app",
           "norm": encodedUrl
         };
-        const urlToNavigate = browseUrls[browseSetting] || "/go";
+        const urlToNavigate = browseUrls[browseSetting] || "/app";
         location.href = urlToNavigate;
       })
       .catch((error) => {
