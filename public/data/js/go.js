@@ -2,13 +2,13 @@ const form = document.getElementById("uv-form");
 const address = document.getElementById("uv-address");
 const input = document.querySelector("input");
 
-function reload() {
+function r() {
     document.getElementById("iframeId").src = document.getElementById("iframeId").src;
 }
-function back() {
+function b() {
     document.getElementById("iframeId").contentWindow.history.back();
 }
-function forward() {
+function f() {
     document.getElementById("iframeId").contentWindow.history.forward();
 }
 
@@ -16,7 +16,7 @@ var elem = document.documentElement;
 var isFullscreen = false;
 
 
-function openFullScreen() {
+function fs() {
     if (elem.requestFullscreen) {
         elem.requestFullscreen();
     } else if (elem.webkitRequestFullscreen) {
@@ -27,7 +27,7 @@ function openFullScreen() {
     isFullscreen = true;
 }
 
-function closeFullScreen() {
+function cfs() {
     if (document.exitFullscreen) {
         document.exitFullscreen();
     } else if (document.webkitExitFullscreen) {
@@ -38,7 +38,7 @@ function closeFullScreen() {
     isFullscreen = false;
 }
 
-function toggleFullScreen() {
+function tfs() {
     if (isFullscreen) {
         closeFullScreen();
     } else {
@@ -47,7 +47,7 @@ function toggleFullScreen() {
 }
 
 
-function newTab() {
+function nt() {
     window.open(document.getElementById("iframeId").src);
 }
 

@@ -92,7 +92,10 @@
         justify-content: flex-end;
         transition: 0.3s;
         padding: 5px;
+        }
 
+        .transitionedtopbar {
+          transition: 0.3s ease-in-out;
         }
 
         .navbarLink img {
@@ -641,6 +644,15 @@
         outline: 1px solid var(--theme-color);
         transition: 0.5s;
         }
+        .hoverDiv {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 50px;
+            z-index: 9999;
+            pointer-events: none;
+        }
         .card {
         top: 50%;
         left: 50%;
@@ -757,7 +769,7 @@
 <body style="background-color:black;">
   <div id="darker"></div>
 
-    <div style="background-color: var(--base-color)" class="gonav">
+    <div class="gonav">
         <div class="gonavAlign">
           <a href="/">
             <div class="buttin">
@@ -765,19 +777,19 @@
             </div>
           </a>
     
-          <a onclick="back()">
+          <a onclick="b()">
             <div class="buttin">
               <img style="margin-top: 5px;animation: none;" src="/data/images/icons/backward.png" />
             </div>
           </a>
     
-          <a onclick="reload()">
+          <a onclick="r()">
             <div class="buttin">
               <img style="margin-top: 5px;" class="settingnav" src="/data/images/icons/reload.png" />
             </div>
           </a>
     
-          <a onclick="forward()">
+          <a onclick="f()">
             <div class="buttin">
               <img style="margin-top: 5px; animation: none; margin-left: -10px;" src="/data/images/icons/forward.png" />
             </div>
@@ -790,15 +802,23 @@
             </form>
           </div>
     
-          <a onclick="toggleFullScreen()">
+          <a onclick="tfs()">
             <div class="buttin">
               <img style="margin-top: 5px;animation: none" src="/data/images/icons/fullscreen.png" />
+            </div>
+          </a>
+          <a onclick="nt()">
+            <div class="buttin">
+              <img style="margin-top: 5px;animation: none;" src="/data/images/icons/newtab.png" />
             </div>
           </a>
     
         </div>
       </div>
     <iframe src="" frameborder="0" id="iframeId"></iframe>
+    <select id="cloakSelect"></select>
+    <input type="text" id="panickey" maxlength="1"></input>
+    <input type="text" id="panicurl"></input>
     <script>
       function loadIframe(url) {
         const iframe = document.getElementById('iframeId');
@@ -814,9 +834,32 @@
     <script src="/data/js/go.js"></script>
     <script src="./data/js/cloak/cloak.js"></script>
     <script src="./data/js/cloak/panic.js"></script>
-    <select id="cloakSelect"></select>
-    <input type="text" id="panickey" maxlength="1"></input>
-    <input type="text" id="panicurl"></input>
+    <script>
+    window.addEventListener('DOMContentLoaded', () => {
+        const topBar = document.querySelector('.gonav');
+        const pageTop = document.documentElement.scrollTop || document.body.scrollTop;
+        if (pageTop === 0) {
+          topBar.style.top = '0px';
+        }
+        let topBarVisible = false;
+        document.addEventListener('mousemove', event => {
+          if (event.clientY <= 35) {
+            if (!topBarVisible) {
+              topBar.style.top = '40px';
+              topBar.classList.add('transitionedtopbar');
+              topBarVisible = true;
+            }
+          } else {
+            if (topBarVisible) {
+              topBar.style.top = '0px';
+              topBar.classList.add('transitionedtopbar');
+              topBarVisible = false;
+            }
+          }
+        });
+      });
+    </script>
+    
 </body>
 </html>
 

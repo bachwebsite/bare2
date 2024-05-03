@@ -78,8 +78,8 @@ const cloaks = [
   },
   {
     name: "classroom",
-    title: "Google Classroom - Sign in - Google Accounts",
-    favicon: "https://www.gstatic.com/classroom/logo_square_rounded.svg",
+    title: "Home",
+    favicon: "//ssl.gstatic.com/classroom/ic_product_classroom_144.png",
   },
   {
     name: "google",
