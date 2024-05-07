@@ -1,8 +1,8 @@
 const j = document.createElement('link');
-      j.href = 'https://cdn.jsdelivr.net/gh/eliyantosarage/font-awesome-pro@main/fontawesome-pro-6.5.1-web/css/all.min.css';
-      j.rel = 'stylesheet';
-      const i = document.querySelector('head');
-      i.appendChild(j);
+j.href = 'https://cdn.jsdelivr.net/gh/eliyantosarage/font-awesome-pro@main/fontawesome-pro-6.5.1-web/css/all.min.css';
+j.rel = 'stylesheet';
+const i = document.querySelector('head');
+i.appendChild(j);
 
       const w = document.createElement('nav');
       const a = document.createElement('a');
@@ -45,11 +45,17 @@ const j = document.createElement('link');
       m.appendChild(n);
       w.appendChild(m);
 
+      const q = document.createElement('a');
+      q.href = '/tabs';
+      const r = document.createElement('i');
+      r.classList.add('fas', 'fa-circle-plus');
+      q.appendChild(r);
+      w.appendChild(q);
+
       const o = document.createElement('a');
-      o.href = '/';
-      o.download = '/breakium.html';
+      o.href = '/how2make1link.html';
       const p = document.createElement('i');
-      p.classList.add('fas', 'fa-file-arrow-down');
+      p.classList.add('fas', 'fa-link');
       o.appendChild(p);
       w.appendChild(o);
 
