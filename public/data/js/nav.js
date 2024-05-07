@@ -45,6 +45,14 @@ const j = document.createElement('link');
       m.appendChild(n);
       w.appendChild(m);
 
+      const o = document.createElement('a');
+      o.href = '/';
+      o.download = '/breakium.html';
+      const p = document.createElement('i');
+      p.classList.add('fas', 'fa-file-arrow-down');
+      o.appendChild(p);
+      w.appendChild(o);
+
       const y = document.createElement('span');
       y.id = 'span';
       const x = document.createElement('i');

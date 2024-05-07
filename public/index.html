@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="en">
 
@@ -44,9 +43,7 @@
       <input type="text" id="panickey" maxlength="1"></input>
       <input type="text" id="panicurl"></input>
       <div id="marks">
-        <div id="mark" onclick="launch('https://youtube.com/');"><img src="./data/images/yt.png"><p>YouTube</p></div>
-        <div id="mark" onclick="launch('https://google.com/');"><img src="./data/images/google.png"><p>Google</p></div>
-        <div id="mark" onclick="launch('https://pandora.com/');"><img src="./data/images/pandora.png"><p>Pandora</p></div>
+        <div id="markiplier" onclick="launchnew();" class="dont-delete"><img src="./data/images/plus.png"><p>New +</p></div>
       </div>
 
     </center>  
@@ -57,6 +54,87 @@
     <script src="./sw.js"></script>
     <script src="/dynamic/dynamic.config.js"></script>
     <script src="./data/js/cloak/panic.js"></script>
+    <script>
+      function launchnew() {
+        const b = prompt("What is the URL of it?") || "";
+        const c = prompt("What is the icon?") || "";
+        const d = prompt("What is the title?") || "";
+  
+        const e = document.querySelector("#marks");
+  
+        const f = document.createElement("div");
+        f.setAttribute("id", "mark");
+        f.setAttribute("onclick", `launch('${b}');`);
+        f.setAttribute("data-url", b);
+        f.setAttribute("data-icon", c);
+        f.setAttribute("data-title", d);
+        const g = document.createElement("img");
+        g.setAttribute("src", c);
+        const h = document.createElement("p");
+        h.textContent = d;
+        const deleteButton = document.createElement("button");
+        deleteButton.textContent = "❌";
+        deleteButton.setAttribute("id", "delete-button");
+        deleteButton.addEventListener("click", function() {
+          e.removeChild(f);
+          updateLocalStorage();
+        });
+  
+        f.appendChild(g);
+        f.appendChild(h);
+        f.appendChild(deleteButton);
+        e.appendChild(f);
+        updateLocalStorage();
+      }
+      function updateLocalStorage() {
+        const marks = [];
+        const markElements = document.querySelectorAll("#mark");
+        markElements.forEach(markElement => {
+          const mark = {
+            url: markElement.getAttribute("data-url"),
+            icon: markElement.getAttribute("data-icon"),
+            title: markElement.getAttribute("data-title")
+          };
+          marks.push(mark);
+        });
+        localStorage.setItem("marks", JSON.stringify(marks));
+      }
+  
+      function loadMarks() {
+        const marks = JSON.parse(localStorage.getItem("marks")) || [];
+        const e = document.getElementById("marks");
+
+        marks.forEach(mark => {
+          const f = document.createElement("div");
+          f.setAttribute("id", "mark");
+          f.setAttribute("data-url", mark.url);
+          f.setAttribute("data-icon", mark.icon);
+          f.setAttribute("data-title", mark.title);
+          f.setAttribute("onclick", `launch('${mark.url}');`);
+          const g = document.createElement("img");
+          g.setAttribute("src", mark.icon);
+          const h = document.createElement("p");
+          h.textContent = mark.title;
+          const deleteButton = document.createElement("button");
+          deleteButton.textContent = "❌";
+          deleteButton.setAttribute("id", "delete-button");
+          deleteButton.addEventListener("click", function(event) {
+            event.stopPropagation();
+            if (!f.classList.contains("dont-delete")) {
+              e.removeChild(f);
+              updateLocalStorage();
+            }
+          });
+
+          f.appendChild(g);
+          f.appendChild(h);
+          f.appendChild(deleteButton);
+          e.appendChild(f);
+        });
+      }
+      window.addEventListener("load", loadMarks);
+  
+    </script>
 
     <script>
       const worker = new Worker("/dynamic/dynamic.worker.js");

@@ -1,168 +1,110 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Tab System with iframes</title>
-<style>
-  body {
-    background-color: #100020;
-    font-family: Arial, sans-serif;
-  }
-
-  .close-btn {
-    font-size: 10px;
-  }
-
-  .tabs {
-      display: flex;
-      gap: 10px;
-      margin-bottom: 10px;
-  }
-
-  .tablinks {
-      padding: 10px 20px;
-      background-color: #f0f0f0;
-      border: 1px solid #ccc;
-      cursor: pointer;
-  }
-  .tablinks.active {
-    background-color: #d0d0d0; /* Adjust the color as needed */
-  }
-
-
-  .tablinks:hover {
-      background-color: #e0e0e0;
-  }
-
-  .tab-content {
-      height: 850px;
-  }
-
-  .tabiframe {
-      width: 100%;
-      height: 100%;
-      display: none;
-  }
-
-  .tabiframe.active {
-      display: block;
-  }
-</style>
-</head>
-  <body style="background-color:black;">
-    <div class="tabs">
-      <button class="tablinks" onclick="openTab(event, 'Tab3')">
-        break://home
-      </button>
-      <button class="new-tab-btn" onclick="createNewTab()">+</button>
-      <button class="new-tab-btn" onclick="closeSelectedTab()">x</button>
-    </div>
-    <div class="tab-content">
-      <iframe
-        id="Tab3"
-        class="tabiframe"
-        src="main.html"
-        frameborder="0"
-      ></iframe>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Tabs</title>
+    <style>
+      @font-face {
+        font-family: 'FONT2';
+        src: url('/data/fonts/Tempura.ttf');
+      }
+      * {
+        z-index: 99;
+        font-family: 'FONT2', sans-serif;
+      }
+      #x {
+        margin-left: 10px;
+      }
+      button {
+        background: #6317a9;
+        width: 30px;
+        height: 30px;
+        border: 1px solid #200540;
+        font-size: 20px;
+        margin-bottom: -100px;
+        border-top-left-radius: 7px;
+        border-top-right-radius: 7px;
+        border-bottom: none;
+      }
+      body {
+        background-color: #200540;
+        font-family: Arial, sans-serif;
+      }
+      .active {
+        background-color: #8326cb;
+      }
+      iframe {
+        width: 99vw;
+        height: 95vh;
+        border: none;
+        border-radius: 15px;
+        z-index: 0;
+        position: absolute;
+        display: none;
+      }
+      .active-iframe {
+        display: block;
+      }
+      #tab {
+        height: 30px;
+        width: 130px;
+        margin: 0;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <div id="tabcontainer">
+        <div id="tabs">
+          <button id="x">X</button>
+          <button id="plus">+</button>
+        </div>
+      </div>
     </div>
     <script>
-      function closeSelectedTab() {
-        var activeTab = document.querySelector(".tablinks.active");
-        if (activeTab) {
-          closeTab(activeTab);
+      const tabcontainer = document.getElementById("tabcontainer");
+      const tabs = document.getElementById("tabs");
+      const x = document.getElementById("x");
+      const plus = document.getElementById("plus");
+      let activeTabs = [];
+      let activeIframes = [];
+
+      plus.addEventListener("click", function () {
+        const tab = document.createElement("button");
+        const iframe = document.createElement("iframe");
+        tab.textContent = "Loading..";
+        iframe.src = "/";
+        iframe.onload = function () {
+          tab.textContent = iframe.contentWindow.document.title;
+        };
+        tab.id += "tab";
+        tabcontainer.appendChild(iframe);
+        tabs.appendChild(tab);
+        tab.addEventListener("click", function () {
+          activeTabs.forEach((tab) => tab.classList.remove("active"));
+          activeIframes.forEach((iframe) =>
+            iframe.classList.remove("active-iframe")
+          );
+          activeIframes = activeIframes.filter((iframe) => iframe !== iframe);
+          activeTabs = activeTabs.filter((tab) => tab !== tab);
+          activeTabs.push(tab);
+          activeIframes.push(iframe);
+          tab.classList.add("active");
+          iframe.classList.add("active-iframe");
+        });
+      });
+
+      x.addEventListener("click", function () {
+        const activeTab = activeTabs.pop();
+        const activeIframe = activeIframes.pop();
+        if (activeTab && activeIframe) {
+          activeTab.classList.remove("active");
+          activeIframe.classList.remove("active-iframe");
+          activeIframe.remove();
+          activeTab.remove();
         }
-      }
-      function openTab(evt, tabName) {
-        var iframes = document.getElementsByClassName("tabiframe");
-        for (var i = 0; i < iframes.length; i++) {
-          iframes[i].classList.remove("active");
-        }
-
-        var iframeToShow = document.getElementById(tabName);
-        iframeToShow.classList.add("active");
-
-        var tablinks = document.getElementsByClassName("tablinks");
-        for (var i = 0; i < tablinks.length; i++) {
-          tablinks[i].classList.remove("active");
-        }
-
-        if (evt) {
-          evt.currentTarget.classList.add("active");
-          addCloseButton(evt.currentTarget);
-
-
-          evt.currentTarget.textContent = iframeToShow.contentDocument.title;
-        }
-      }
-
-      function addCloseButton(tabButton) {
-            var closeButton = tabButton.querySelector(".close-btn");
-            if (closeButton) {
-                return;
-            }
-
-            var closeBtn = document.createElement("span");
-            closeBtn.classList.add("close-btn");
-            closeBtn.innerHTML = "&times;";
-            tabButton.appendChild(closeBtn);
-
-            closeBtn.addEventListener("click", function (e) {
-                e.stopPropagation();
-                closeTab(tabButton);
-            });
-        }
-
-      function closeTab(tabButton) {
-        var tabName = tabButton.getAttribute("onclick").match(/'(.*?)'/)[1];
-        var iframeToClose = document.getElementById(tabName);
-        iframeToClose.classList.remove("active");
-
-        tabButton.remove();
-        iframeToClose.remove();
-
-        var activeTab = document.querySelector(".tablinks.active");
-        if (activeTab && activeTab.id === tabName) {
-          var remainingTabs = document.querySelectorAll(".tablinks");
-          if (remainingTabs.length > 0) {
-            remainingTabs[0].click();
-          }
-        }
-      }
-
-      function createNewTab() {
-        var numTabs = document.querySelectorAll(".tablinks").length;
-        var newTabId = "Tab" + (numTabs + 1);
-
-        var newTabButton = document.createElement("button");
-        newTabButton.classList.add("tablinks");
-        newTabButton.setAttribute("onclick", "openTab(event, '" + newTabId + "')");
-
-        var newIframe = document.createElement("iframe");
-        newIframe.id = newTabId;
-        newIframe.classList.add("tabiframe");
-        newIframe.src = "main.html";
-        newIframe.frameBorder = 0;
-
-        var tabsContainer = document.querySelector(".tabs");
-        tabsContainer.insertBefore(newTabButton, tabsContainer.lastElementChild);
-
-        var tabContentContainer = document.querySelector(".tab-content");
-        tabContentContainer.appendChild(newIframe);
-
-        openTab(null, newTabId);
-        addCloseButton(newTabButton);
-    }
-    tabButton.addEventListener("contextmenu", function (e) {
-          e.preventDefault();
-          closeTab(tabButton);
-    });
+      });
     </script>
-    <script src="./data/js/nav.js"></script>
-              <script src="./data/js/cloak/cloakstore.js"></script>
-          <script src="./data/js/cloak/cloak.js"></script>
-
-
-
-</body>
+  </body>
 </html>
