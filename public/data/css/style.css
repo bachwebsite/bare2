@@ -132,7 +132,7 @@ div.navy>i {
   align-items: center;
   text-align: center;
   border: 4px solid #100020;
-  width: calc(100% - 100px);
+  width: calc(100vw - 1000px);
   height: 50px;
   transition: 0.5s ease-in-out;
   background-color: transparent;
@@ -145,11 +145,11 @@ div.navy>i {
   margin-top: 50px;
 }
 #uv-address:hover {
-  width: calc(100% - 50px);
+  width: calc(100vw - 900px);
   transition: 0.5s ease-in-out;
 }
 #uv-address:focus {
-  width: calc(100% - 40px);
+  width: calc(100vw - 800px);
   transition: 0.5s ease-in-out;
 }
 /* tops */
@@ -160,8 +160,9 @@ div.navy>i {
 }
 
 #mm {
-  min-width: 100px;
-  max-width: 400px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 #span {
   font-size: 40px;
