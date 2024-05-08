@@ -178,13 +178,13 @@ nav {
   background-color: #6317a9;
 }
 nav>a {
-  margin-left: 100px;
+  margin-left: 50px;
   text-decoration: none;
   color: rgb(138, 44, 226);
   font-size: 40px;
 }
 nav>span {
-  margin-left: 100px;
+  margin-left: 50px;
   float: left;
 }
 i {
