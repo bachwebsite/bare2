@@ -6,7 +6,7 @@ i.appendChild(j);
 
       const w = document.createElement('nav');
       const a = document.createElement('a');
-      a.href = '/home.html';
+      a.href = '/';
       a.textContent = 'breakium';
       w.appendChild(a);
 
