@@ -6,12 +6,12 @@
     <title>Tabs</title>
     <style>
       @font-face {
-        font-family: 'FONT2';
-        src: url('/data/fonts/Tempura.ttf');
+        font-family: "FONT2";
+        src: url("/data/fonts/Tempura.ttf");
       }
       * {
         z-index: 99;
-        font-family: 'FONT2', sans-serif;
+        font-family: "FONT2", sans-serif;
       }
       #x {
         margin-left: 10px;
@@ -26,14 +26,35 @@
         border-top-left-radius: 7px;
         border-top-right-radius: 7px;
         border-bottom: none;
+        transition: 0.5s ease;
       }
+
       body {
         background-color: #200540;
         font-family: Arial, sans-serif;
+        transition: background-color 0.5s ease;
       }
+
       .active {
-        background-color: #8326cb;
+        background-color: #6317a9;
+        position: relative;
+        z-index: 1;
       }
+
+      .active::before {
+        content: "";
+        position: absolute;
+        top: 0px;
+        left: -1px;
+        right: -1px;
+        bottom: 0px;
+        border: 2px solid #a24fe0;
+        border-bottom: none;
+        border-radius: 5px;
+        border-bottom-left-radius: 0;
+        border-bottom-right-radius: 0;
+      }
+
       iframe {
         width: 99vw;
         height: 95vh;
@@ -43,13 +64,20 @@
         position: absolute;
         display: none;
       }
+
       .active-iframe {
         display: block;
+        outline: 2px solid #a24fe0;
       }
       #tab {
         height: 30px;
         width: 130px;
         margin: 0;
+      }
+
+      button:hover {
+        background-color: #a24fe0;
+        box-shadow: 0px 5px 5px #a24fe0 ;
       }
     </style>
   </head>
@@ -69,8 +97,7 @@
       const plus = document.getElementById("plus");
       let activeTabs = [];
       let activeIframes = [];
-
-      plus.addEventListener("click", function () {
+      function createTab() {
         const tab = document.createElement("button");
         const iframe = document.createElement("iframe");
         tab.textContent = "Loading..";
@@ -82,19 +109,23 @@
         tabcontainer.appendChild(iframe);
         tabs.appendChild(tab);
         tab.addEventListener("click", function () {
-          activeTabs.forEach((tab) => tab.classList.remove("active"));
-          activeIframes.forEach((iframe) =>
-            iframe.classList.remove("active-iframe")
-          );
-          activeIframes = activeIframes.filter((iframe) => iframe !== iframe);
-          activeTabs = activeTabs.filter((tab) => tab !== tab);
-          activeTabs.push(tab);
-          activeIframes.push(iframe);
-          tab.classList.add("active");
-          iframe.classList.add("active-iframe");
+          activateTab(tab, iframe);
         });
-      });
-
+        activateTab(tab, iframe);
+      }
+      function activateTab(tab, iframe) {
+        activeTabs.forEach((tab) => tab.classList.remove("active"));
+        activeIframes.forEach((iframe) =>
+          iframe.classList.remove("active-iframe")
+        );
+        activeIframes = activeIframes.filter((item) => item !== iframe);
+        activeTabs = activeTabs.filter((item) => item !== tab);
+        activeTabs.push(tab);
+        activeIframes.push(iframe);
+        tab.classList.add("active");
+        iframe.classList.add("active-iframe");
+      }
+      plus.addEventListener("click", createTab);
       x.addEventListener("click", function () {
         const activeTab = activeTabs.pop();
         const activeIframe = activeIframes.pop();
@@ -103,8 +134,14 @@
           activeIframe.classList.remove("active-iframe");
           activeIframe.remove();
           activeTab.remove();
+          if (activeTabs.length > 0) {
+            const lastTab = activeTabs[activeTabs.length - 1];
+            const lastIframe = activeIframes[activeIframes.length - 1];
+            activateTab(lastTab, lastIframe);
+          }
         }
       });
+      window.addEventListener("load", createTab);
     </script>
   </body>
 </html>

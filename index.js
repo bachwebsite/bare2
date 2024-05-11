@@ -8,7 +8,6 @@ import compression from 'compression';
 import chalk from 'chalk';
 import 'dotenv/config';
 import path from "node:path";
-import { dynamicPath } from "@nebula-services/dynamic";
 
 let port = parseInt(process.env.PORT || "");
 if (isNaN(port)) port = 2100;
@@ -18,7 +17,6 @@ const app = express();
 
 const __dirname = process.cwd();
 
-app.use("/public/dynamic/", express.static(dynamicPath))
 app.get('/', (req, res) => {
   res.sendFile(path.join(process.cwd(), '/public/index.html'));
 });
@@ -54,7 +52,6 @@ app.get("/search=:query", async (req, res) => {
 app.use(compression());
 app.use(express.static(process.cwd() + "/public/"));
 app.use("/public/uv/", express.static(process.cwd() + "/uv/"));
-app.use("/public/dynamic/", express.static(process.cwd() + "/dynamic/"));
 
 app.use((req, res) => {
   res.status(404);

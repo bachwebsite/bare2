@@ -1,14 +1,14 @@
-const form = document.getElementById("uv-form");
-const address = document.getElementById("uv-address");
+const form = document.getElementById("form");
+const address = document.getElementById("address");
 const input = document.querySelector("input");
 function reload() {
-    document.getElementById("iframeId").src = document.getElementById("iframeId").src;
+    document.getElementById("fram").src = document.getElementById("fram").src;
 }
 function back() {
-    document.getElementById("iframeId").contentWindow.history.back();
+    document.getElementById("fram").contentWindow.history.back();
 }
 function forward() {
-    document.getElementById("iframeId").contentWindow.history.forward();
+    document.getElementById("fram").contentWindow.history.forward();
 }
 var elem = document.documentElement;
 var isFullscreen = false;
