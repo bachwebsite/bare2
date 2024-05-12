@@ -11,7 +11,7 @@ body {
   padding: 0;
   background: url('/data/images/bg_purple.png');
   background-attachment: fixed;
-  font-family: 'FONT2', sans-serif; 
+  font-family: 'FONT1', sans-serif; 
 }
 #darker {
   position: absolute sticky;
@@ -43,7 +43,7 @@ center h1 {
 .bubbly-button>a {
   font-size: 40px;
   color: #8060bb;
-  font-family: 'FONT2', sans-serif;
+  font-family: 'FONT1', sans-serif;
   letter-spacing: 2px;
 }
 
@@ -68,7 +68,7 @@ center h1 {
   text-align: center;
   font-size: 50px; 
   font-weight: bold;
-  font-family: 'FONT2', sans-serif;
+  font-family: 'FONT1', sans-serif;
 }
 h5#title {
   font-size: 14px;
@@ -95,7 +95,7 @@ div.navy {
 
 div.navy>i {
   font-size: 30px;
-  font-family: 'FONT2', sans-serif;
+  font-family: 'FONT1', sans-serif;
   border-radius: 10%;
 }
 
@@ -141,7 +141,7 @@ div.navy>i {
   text-align: center;
   color: white;
   font-size: 25px;
-  font-family: 'FONT2', sans-serif;
+  font-family: 'FONT1', sans-serif;
   margin-bottom: auto;
   margin-top: 50px;
 }
@@ -211,7 +211,7 @@ i {
   color: blueviolet;
   height: 50px;
   font-size: 20px;
-  font-family: "FONT2", sans-serif;
+  font-family: "FONT1", sans-serif;
   letter-spacing: 2px;
 }
 .visible {
@@ -224,7 +224,7 @@ i {
   width: 400px;
   height: 50px;
   font-size: 20px;
-  font-family: "FONT2", sans-serif;
+  font-family: "FONT1", sans-serif;
   letter-spacing: 2px;
 }
 #panicurl {
@@ -234,7 +234,7 @@ i {
   width: 400px;
   height: 50px;
   font-size: 20px;
-  font-family: "FONT2", sans-serif;
+  font-family: "FONT1", sans-serif;
   letter-spacing: 2px;
 }
 #panic {
