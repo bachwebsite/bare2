@@ -35,6 +35,15 @@ body {
   cursor: pointer;
   transition: transform 0.3s cubic-bezier(0.175, 0.485, 0.32, 0.875);
 }
+center h1 {
+  font-size: 100px;
+  font-weight: 500;
+  margin-bottom: 0;
+  user-select: none;
+  cursor: pointer;
+  color: #5d517c;
+  -webkit-text-stroke: 1px #000;
+}
 .bubbly-button>a {
   font-size: 40px;
   color: #8060bb;
