@@ -1,9 +1,5 @@
 @font-face {
   font-family: 'FONT1', sans-serif;
-  src: url('/data/fonts/AlteHaasGroteskRegular.ttf');
-}
-@font-face {
-  font-family: 'FONT2';
   src: url('/data/fonts/BeVietnamPro-Bold.ttf');
 }
 
