@@ -14,27 +14,7 @@
     <!-- eruda -->
     <script src="./data/js/eruda.js"></script>
     
-    <style>
-      @font-face{font-family:'FONT2';src:url('/data/fonts/Tempura.ttf');}
-      *{margin:0;padding:0;overflow:hidden}
-      #fram{width:100vw;height:100vh;z-index:99;border:none}
-      body{top:50%;font-family:'FONT2',sans-serif;text-align:center;background:url('/data/images/loading.gif') no-repeat;transition:.5s}
-      a{color:inherit;text-decoration:none}
-      .navbar{display:flex;flex-wrap:wrap;flex-direction:row;width:30vw;height:22px;border-radius:3px;padding:.9%;position:fixed;top:5.5vh;z-index:10000;left:50%;background:#100520;text-align:center;align-content:space-evenly;align-items:center;transform:translate(-50%,-4vh)}
-      .navbar-enclosure{text-align:center;display:flex;justify-content:space-evenly}
-      .top-spot{display:flex;width:500px;height:22px;border-radius:5px;padding:9px;position:fixed;top:5.5vh;z-index:10000;left:50%;background:rgba(153,50,204,.1);border:2px solid darkorchid;text-align:center;align-content:space-evenly;align-items:center;transform:translate(-50%,-4vh)}
-      .top-spot-enclosure{text-align:center;position:absolute;left:50%;transform:translate(-50%,0);display:flex}
-      .buttin{height:26px;margin-left:.4vw;margin-right:.4vw;cursor:pointer;justify-content:space-evenly;transition:.3s;padding:5px}
-      .buttin img{width:26px;display:inline-flex;margin-left:-6px;margin-right:-6px;height:auto;transition:1s;}
-      .buttin #svgg{filter: invert(100%) sepia(4%) saturate(0%) hue-rotate(293deg) brightness(107%) contrast(104%);}
-      .buttin p{vertical-align:top;display:inline-flex;will-change:auto;margin:0;margin-right:1px}
-      button{appearance:none;background-color:#000;border:.125em solid #1A1A1A;border-radius:.9375em;box-sizing:border-box;color:#fff;cursor:pointer;display:inline-block;line-height:normal;min-height:3.75em;min-width:48%;outline:none;margin-left:1%;margin-bottom:2%;padding:1em 2.3em;text-align:center;text-decoration:none;user-select:none}
-      .slashapp{align-items:center;text-align:center;margin-bottom:8px}
-      .slashapp_{font-family:'FONT2',sans-serif;font-size:16px;border:none;background-color:#000;color:white;padding:.7rem 1rem;border-radius:3px;width:8.8vw;height:24px;opacity:.3;text-align:center}
-      .slashapp_:focus{outline:none}
-      .transitionedtopbar{transition:.3s ease-in-out}
-      #customCloakinput{display:none}
-    </style>
+    <link rel="stylesheet" href="./data/css/q.css">
 </head>
 <body style="background-color:black;">
     <div class="top-spot">
@@ -43,11 +23,14 @@
           <a onclick="bFram()"><div class="buttin"><img id="svgg" style="margin-top: 5px;" src="/data/images/svg/left.svg" /></div></a>
           <a onclick="fFram()"><div class="buttin"><img id="svgg" style="margin-top: 5px;" src="/data/images/svg/right.svg" /></div></a>
           <a onclick="rFram()"><div class="buttin"><img id="svgg" style="width: 36px;" src="/data/images/svg/reload.svg" /></div></a>
-          <div class="slashapp" style="width: 185px; position: relative; margin-right:10px; margin-top: 7px;"><form id="uv-form"><input placeholder="type as you must" id="uv-address" style="max-height: 10px; padding: 10px; letter-spacing: 1px;"class="slashapp_" type="text" /></form></div>
+          <div class="slashapp" style="position: relative; margin-right:10px; margin-top: 7px;"><form id="form"><input placeholder="type as you must" id="address" style="max-height: 10px; padding: 10px; letter-spacing: 1px;"class="slashapp_" type="text" /></form></div>
           <a onclick="fsFram()"><div class="buttin"><img id="svgg" style="margin-top: 5px;" src="/data/images/svg/fullscreen.svg" /></div></a>
           <a onclick="ntFram()"><div class="buttin"><img id="svgg" style="margin-top: 5px;" src="/data/images/svg/newtab.svg" /></div></a>
           <a onclick="consol()"><div class="buttin"><img id="svgg" style="margin-top: 5px;" src="/data/images/svg/inspect.svg" /></div></a>
     
+        </div>
+        <div class="buttin" id="toggleTopBar">
+          <img src="/data/images/svg/collapse.svg" style="width: 26px;" id="toggleIcon">
         </div>
       </div>
     <iframe src="" id="fram"></iframe>
@@ -62,9 +45,6 @@
     <script src="./data/js/win.js"></script>
     <script src="./data/js/cloak/cloak.js"></script>
     <script src="./data/js/cloak/panic.js"></script>   
-    <script>
-      const _0x294a23=_0x1461;function _0x1461(_0x35e224,_0x2239f1){const _0x383d77=_0x383d();return _0x1461=function(_0x14610c,_0x57b634){_0x14610c=_0x14610c-0x149;let _0x3a4880=_0x383d77[_0x14610c];return _0x3a4880;},_0x1461(_0x35e224,_0x2239f1);}(function(_0x35bd4e,_0x9a0ff6){const _0x1dfbe1=_0x1461,_0x106ad5=_0x35bd4e();while(!![]){try{const _0x4e3a71=parseInt(_0x1dfbe1(0x14b))/0x1+-parseInt(_0x1dfbe1(0x154))/0x2+-parseInt(_0x1dfbe1(0x151))/0x3+parseInt(_0x1dfbe1(0x14c))/0x4+parseInt(_0x1dfbe1(0x150))/0x5+parseInt(_0x1dfbe1(0x149))/0x6+-parseInt(_0x1dfbe1(0x14d))/0x7;if(_0x4e3a71===_0x9a0ff6)break;else _0x106ad5['push'](_0x106ad5['shift']());}catch(_0x24ebfb){_0x106ad5['push'](_0x106ad5['shift']());}}}(_0x383d,0xdae0f),window[_0x294a23(0x159)](_0x294a23(0x157),()=>{const _0x284084=_0x294a23,_0x4092cb=document[_0x284084(0x15c)](_0x284084(0x14f)),_0x10e3c5=document[_0x284084(0x14e)]['scrollTop']||document[_0x284084(0x158)][_0x284084(0x156)];_0x10e3c5===0x0&&(_0x4092cb[_0x284084(0x15e)]['top']=_0x284084(0x155));let _0x10f81f=![];document[_0x284084(0x159)](_0x284084(0x153),_0x1b47df=>{const _0x4d95dc=_0x284084;_0x1b47df[_0x4d95dc(0x15b)]<=0x23?!_0x10f81f&&(_0x4092cb[_0x4d95dc(0x15e)][_0x4d95dc(0x15a)]='40px',_0x4092cb[_0x4d95dc(0x14a)][_0x4d95dc(0x152)]('transitionedtopbar'),_0x10f81f=!![]):_0x10f81f&&(_0x4092cb['style'][_0x4d95dc(0x15a)]=_0x4d95dc(0x155),_0x4092cb[_0x4d95dc(0x14a)][_0x4d95dc(0x152)](_0x4d95dc(0x15d)),_0x10f81f=![]);});}));function _0x383d(){const _0xb66fa1=['classList','262002VmkzWi','5709720WNvaww','12022913TABhQa','documentElement','.top-spot','5739335sBUwRG','643482rfFBAb','add','mousemove','3177230BnRJrl','0px','scrollTop','DOMContentLoaded','body','addEventListener','top','clientY','querySelector','transitionedtopbar','style','9479376JxJApL'];_0x383d=function(){return _0xb66fa1;};return _0x383d();}
-    </script>
     
 </body>
 </html>

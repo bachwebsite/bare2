@@ -1,5 +1,5 @@
-const form = document.getElementById("form");
-const address = document.getElementById("address");
+const form = document.getElementById("uv-form");
+const address = document.getElementById("uv-address");
 const input = document.querySelector("input");
 
 function rFram() {
