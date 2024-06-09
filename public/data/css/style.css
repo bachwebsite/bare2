@@ -1,5 +1,5 @@
 @font-face {
-  font-family: 'FONT1', sans-serif;
+  font-family: 'FONT2', sans-serif;
   src: url('/data/fonts/BeVietnamPro-Bold.ttf');
 }
 
@@ -11,7 +11,7 @@ body {
   padding: 0;
   background: url('/data/images/bg_purple.png');
   background-attachment: fixed;
-  font-family: 'FONT1', sans-serif; 
+  font-family: 'Outfit', sans-serif; 
 }
 #darker {
   position: absolute sticky;
@@ -37,13 +37,15 @@ center h1 {
   margin-bottom: 0;
   user-select: none;
   cursor: pointer;
-  color: #5d517c;
-  -webkit-text-stroke: 1px #000;
+  color: black;
+}
+#bvp {
+  font-family: 'Be Vietname Pro', sans-serif;
 }
 .bubbly-button>a {
   font-size: 40px;
   color: #8060bb;
-  font-family: 'FONT1', sans-serif;
+  font-family: 'Outfit', sans-serif;
   letter-spacing: 2px;
 }
 
@@ -68,7 +70,7 @@ center h1 {
   text-align: center;
   font-size: 50px; 
   font-weight: bold;
-  font-family: 'FONT1', sans-serif;
+  font-family: 'Outfit', sans-serif;
 }
 h5#title {
   font-size: 14px;
@@ -95,7 +97,7 @@ div.navy {
 
 div.navy>i {
   font-size: 30px;
-  font-family: 'FONT1', sans-serif;
+  font-family: 'Outfit', sans-serif;
   border-radius: 10%;
 }
 
@@ -141,7 +143,7 @@ div.navy>i {
   text-align: center;
   color: white;
   font-size: 25px;
-  font-family: 'FONT1', sans-serif;
+  font-family: 'Outfit', sans-serif;
   margin-bottom: auto;
   margin-top: 50px;
 }
