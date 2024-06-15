@@ -37,7 +37,7 @@ center h1 {
   margin-bottom: 0;
   user-select: none;
   cursor: pointer;
-  color: black;
+  color: orchid transparent;
 }
 #bvp {
   font-family: 'Be Vietname Pro', sans-serif;
